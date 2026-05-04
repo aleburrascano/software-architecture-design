@@ -7,11 +7,14 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 ## Topics
 *(synthesis pages — start here for queries)*
 
+### Meta / Navigation
+- [[Learning Path]] — 10-stage guided journey from design principles → distributed systems → observability
+
 ### Design Patterns
 - [[Design Patterns Overview]] — GoF three-category taxonomy, 23 patterns, patterns vs. principles, learning sequence
 - [[Creational Patterns Overview]] — when and how to choose among the 7 creational patterns
-- [[Structural Patterns Overview]] — when and how to choose among the 7 structural patterns
-- [[Behavioral Patterns Overview]] — when and how to choose among the 10 behavioral patterns; pattern families
+- [[Structural Patterns Overview]] — choosing among 7 structural patterns; structural vs. behavioral comparisons
+- [[Behavioral Patterns Overview]] — choosing among 10 behavioral patterns; pattern family groupings
 
 ### Design Principles
 - [[SOLID Principles]] — all five principles as a system; origins, interactions, criticisms
@@ -29,6 +32,18 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 
 ### Domain-Driven Design
 - [[DDD Building Blocks]] — all strategic and tactical DDD patterns and how they fit together
+
+### Testing & Quality
+- [[Testing Strategies Overview]] — test pyramid, TDD, BDD, contract testing, doubles; decision table for test types
+
+### Reactive Architecture
+- [[Reactive Architecture Overview]] — Reactive Manifesto, Reactive Streams, framework comparison, when to use
+
+### Messaging & Communication
+- [[Messaging Patterns Overview]] — queues vs. topics vs. streams; broker vs. streaming platform; EIP taxonomy
+
+### API Design
+- [[API Design Overview]] — REST vs. GraphQL vs. gRPC decision guide; versioning, contracts, maturity model
 
 ---
 
@@ -131,6 +146,46 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 - [[Backpressure]] — flow control; throttle/buffer/drop/reject strategies; Reactive Streams
 - [[Distributed Transactions]] — 2PC mechanics and problems; Saga as the modern alternative
 
+## Concepts — Messaging & Event Streaming
+
+- [[Message Queue]] — AMQP model; exchange types; delivery guarantees; RabbitMQ specifics
+- [[Publish-Subscribe Pattern]] — topics vs. queues; fan-out; distributed vs. in-process Observer
+- [[Apache Kafka]] — distributed log; partitions; consumer groups; offsets; vs. RabbitMQ table
+- [[Message Broker]] — broker role in EDA; push vs. pull; RabbitMQ vs. Kafka trade-off table
+- [[Enterprise Integration Patterns]] — Hohpe & Woolf 65 patterns; channels, routers, translators, endpoints
+
+## Concepts — API Design
+
+- [[REST]] — Fielding's 6 constraints; resource model; HTTP verb semantics; Richardson Maturity Model
+- [[GraphQL]] — query/mutation/subscription; type system; resolver model; N+1 problem; vs REST/gRPC
+- [[gRPC]] — Protocol Buffers; HTTP/2; 4 streaming modes; contract-first; vs REST/GraphQL table
+- [[API Design Principles]] — versioning strategies; backward compat rules; idempotency keys; HATEOAS
+- [[Richardson Maturity Model]] — Level 0–3 with examples; HATEOAS link anatomy; design principles per level
+
+## Concepts — Reactive Architecture
+
+- [[Reactive Architecture]] — Reactive Manifesto: Responsive, Resilient, Elastic, Message-Driven
+- [[Reactive Streams]] — Publisher/Subscriber/Subscription/Processor; backpressure via request(n); JDK 9 Flow
+- [[Reactive Programming]] — ReactiveX/Observable model; operators; Project Reactor; Spring WebFlux
+
+## Concepts — Testing
+
+- [[Test Pyramid]] — unit/integration/E2E layers; ice cream cone anti-pattern; narrow vs. broad integration
+- [[Test-Driven Development]] — Red-Green-Refactor; Kent Beck; sociable vs. solitary tests
+- [[Behavior-Driven Development]] — Given/When/Then; Three Amigos; Gherkin/Cucumber; collaboration tool
+- [[Consumer-Driven Contract Testing]] — Pact workflow; provider/consumer contracts; microservices testing
+- [[Test Double]] — Meszaros taxonomy: Dummy, Fake, Stub, Spy, Mock; state vs. behaviour verification
+- [[Integration Testing]] — narrow vs. broad; Testcontainers; test one seam at a time
+- [[Property-Based Testing]] — generative testing; QuickCheck; Hypothesis; shrinking; edge case discovery
+
+## Concepts — DevOps & Infrastructure
+
+- [[Twelve-Factor App]] — all 12 factors; Heroku origins; cloud-native app principles
+- [[Infrastructure as Code]] — declarative vs. imperative; immutable infrastructure; Terraform/Pulumi/CDK
+- [[Continuous Integration and Delivery]] — CI vs CD; pipeline stages; DORA metrics; deployment strategies
+- [[Blue-Green Deployment]] — zero-downtime environment switching; instant rollback; expand-contract for DBs
+- [[Canary Release]] — gradual traffic shifting; automated canary analysis; feature flag relationship
+
 ## Concepts — Observability
 
 - [[Observability]] — three pillars (logs/metrics/traces); observability vs. monitoring; OpenTelemetry
@@ -142,10 +197,10 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 - [[Encapsulation]] — data hiding + behavioral bundling; invariant enforcement; vs. information hiding
 - [[Information Hiding]] — Parnas 1972; design secret as the module's reason for existence
 - [[Modularity]] — PHAME; horizontal vs. vertical partitioning; trade-offs of over-modularization
-- [[Coupling and Cohesion]] — inverse relationship; coupling types (content→data); cohesion types (coincidental→functional)
+- [[Coupling and Cohesion]] — inverse relationship; coupling types (content→data); cohesion types
 - [[Separation of Concerns]] — Dijkstra 1974; applied at class/layer/aspect/protocol levels
 - [[Law of Demeter]] — principle of least knowledge; Ian Holland 1987; train wreck anti-pattern
-- [[Software Design vs Software Architecture]] — locality criterion; Eden/Kazman; the design-architecture continuum
+- [[Software Design vs Software Architecture]] — locality criterion; Eden/Kazman; the continuum
 - [[Conceptual Integrity]] — Fred Brooks; single architect vision; the most important system quality
 - [[Technical Debt]] — Ward Cunningham's debt metaphor; four-quadrant model; management strategies
 - [[Conway's Law]] — org structure shapes system architecture; Inverse Conway Maneuver
@@ -158,6 +213,16 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 ## People
 
 - [[Gang of Four]] — Gamma, Helm, Johnson, Vlissides; 1994 GoF book; 23 canonical patterns
+- [[Martin Fowler]] — named CQRS, Event Sourcing, Microservices patterns; Refactoring; PoEAA; Thoughtworks Chief Scientist
+- [[Robert C. Martin]] — SOLID principles, Clean Architecture, Clean Code; founding Agile Manifesto signatory
+- [[Eric Evans]] — Domain-Driven Design; Ubiquitous Language, Bounded Context, Aggregate, Domain Events
+- [[Alistair Cockburn]] — Hexagonal Architecture (Ports & Adapters); Crystal methodology; Agile Manifesto
+- [[Ward Cunningham]] — coined Technical Debt; invented Wiki; co-created Extreme Programming with Kent Beck
+- [[Kent Beck]] — Test-Driven Development; Extreme Programming; YAGNI; JUnit; four rules of simple design
+- [[Gregor Hohpe]] — Enterprise Integration Patterns; 65 messaging patterns; event-driven architecture
+- [[Chris Richardson]] — Microservices Patterns; Saga pattern; microservices.io; distributed data management
+- [[Edsger Dijkstra]] — Separation of Concerns; structured programming; semaphores; Turing Award
+- [[David Parnas]] — Information Hiding; modular decomposition criteria; 1972 CACM paper
 
 ---
 
@@ -182,3 +247,16 @@ One line per wiki page: `- [[Page Name]] — summary`. Update on every ingest.
 - [[Microsoft Azure - Sidecar Pattern]] — Azure Architecture Center docs for Sidecar
 - [[Microsoft Azure - Strangler Fig Pattern]] — Azure Architecture Center docs with database migration example
 - [[microservices.io - Saga Pattern]] — Chris Richardson's canonical Saga pattern catalog entry
+- [[Martin Fowler - Practical Test Pyramid]] — Fowler's test pyramid article; unit/integration/E2E balance
+- [[Martin Fowler - Test Double]] — Fowler's TestDouble taxonomy bliki entry
+- [[Martin Fowler - Consumer-Driven Contracts]] — Ian Robinson's original CDC article
+- [[Pact - Consumer-Driven Contract Testing]] — docs.pact.io; Pact workflow and broker
+- [[Reactive Manifesto]] — reactivemanifesto.org; four properties of reactive systems
+- [[Reactive Streams Specification]] — reactive-streams.org; Publisher/Subscriber/Subscription interfaces
+- [[12factor.net - The Twelve-Factor App]] — Adam Wiggins / Heroku; all 12 factors
+- [[Martin Fowler - Richardson Maturity Model]] — levels 0–3; HATEOAS
+- [[gRPC Documentation]] — gRPC intro and core concepts
+- [[GraphQL Learn]] — GraphQL.org learn section (403 on fetch; flagged unverified)
+- [[RabbitMQ - AMQP Concepts]] — AMQP 0-9-1 concepts; exchanges, queues, bindings
+- [[Apache Kafka - Introduction]] — kafka.apache.org/intro; distributed log overview
+- [[Enterprise Integration Patterns - EIP]] — Hohpe & Woolf catalogue overview

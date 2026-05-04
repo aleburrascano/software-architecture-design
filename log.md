@@ -203,12 +203,96 @@ index.md and log.md fully reconciled.
 
 ---
 
+## [2026-05-03] ingest | People pages (10 key figures)
+
+Sources: Wikipedia, martinfowler.com, cleancoder.com, microservices.io, enterpriseintegrationpatterns.com, Avanscoperta bio
+
+Pages created:
+- `wiki/people/Martin Fowler.md`
+- `wiki/people/Robert C. Martin.md`
+- `wiki/people/Eric Evans.md`
+- `wiki/people/Alistair Cockburn.md`
+- `wiki/people/Ward Cunningham.md`
+- `wiki/people/Gregor Hohpe.md`
+- `wiki/people/Chris Richardson.md`
+- `wiki/people/Edsger Dijkstra.md`
+- `wiki/people/David Parnas.md`
+- `wiki/people/Kent Beck.md`
+
+---
+
+## [2026-05-03] ingest | Testing strategies + Reactive Architecture
+
+Sources: martinfowler.com (Test Pyramid, Test Double, Consumer-Driven Contracts), docs.pact.io, reactivemanifesto.org, reactive-streams.org + curated list (testing section)
+
+Pages created:
+- `wiki/concepts/Test Pyramid.md`
+- `wiki/concepts/Test-Driven Development.md`
+- `wiki/concepts/Behavior-Driven Development.md`
+- `wiki/concepts/Consumer-Driven Contract Testing.md`
+- `wiki/concepts/Test Double.md`
+- `wiki/concepts/Integration Testing.md`
+- `wiki/concepts/Property-Based Testing.md`
+- `wiki/concepts/Reactive Architecture.md`
+- `wiki/concepts/Reactive Streams.md`
+- `wiki/concepts/Reactive Programming.md`
+- `wiki/topics/Testing Strategies Overview.md`
+- `wiki/topics/Reactive Architecture Overview.md`
+- `wiki/sources/Martin Fowler - Practical Test Pyramid.md`
+- `wiki/sources/Martin Fowler - Test Double.md`
+- `wiki/sources/Martin Fowler - Consumer-Driven Contracts.md`
+- `wiki/sources/Pact - Consumer-Driven Contract Testing.md`
+- `wiki/sources/Reactive Manifesto.md`
+- `wiki/sources/Reactive Streams Specification.md`
+
+---
+
+## [2026-05-03] ingest | Messaging, API Design, DevOps/Infrastructure
+
+Sources: 12factor.net, gRPC docs, kafka.apache.org, rabbitmq.com (AMQP concepts), martinfowler.com (Richardson Maturity Model), enterpriseintegrationpatterns.com + curated list (messaging/API/DevOps sections)
+
+Pages created:
+- `wiki/concepts/Message Queue.md`
+- `wiki/concepts/Publish-Subscribe Pattern.md`
+- `wiki/concepts/Apache Kafka.md`
+- `wiki/concepts/Enterprise Integration Patterns.md`
+- `wiki/concepts/Message Broker.md`
+- `wiki/concepts/REST.md`
+- `wiki/concepts/GraphQL.md`
+- `wiki/concepts/gRPC.md`
+- `wiki/concepts/API Design Principles.md`
+- `wiki/concepts/Richardson Maturity Model.md`
+- `wiki/concepts/Twelve-Factor App.md`
+- `wiki/concepts/Infrastructure as Code.md`
+- `wiki/concepts/Continuous Integration and Delivery.md`
+- `wiki/concepts/Blue-Green Deployment.md`
+- `wiki/concepts/Canary Release.md`
+- `wiki/topics/API Design Overview.md`
+- `wiki/topics/Messaging Patterns Overview.md`
+- `wiki/sources/12factor.net - The Twelve-Factor App.md`
+- `wiki/sources/Martin Fowler - Richardson Maturity Model.md`
+- `wiki/sources/gRPC Documentation.md`
+- `wiki/sources/GraphQL Learn.md`
+- `wiki/sources/RabbitMQ - AMQP Concepts.md`
+- `wiki/sources/Apache Kafka - Introduction.md`
+- `wiki/sources/Enterprise Integration Patterns - EIP.md`
+
+---
+
+## [2026-05-03] edit | Learning Path + index reconciliation
+
+Pages created:
+- `wiki/topics/Learning Path.md` (10-stage guide tying the full wiki together)
+
+index.md and log.md fully reconciled. Total wiki: ~190 pages.
+
+---
+
 ## Pending / future ingest
 
-- Follow additional links from `raw/mehdihadeliawesome-software-architecture.md` — only ~30 articles fetched of ~200+ listed; many categories (Testing, DevOps, Security, gRPC, GraphQL, Messaging) not yet processed
-- Add: Robert C. Martin books (Clean Code, Clean Architecture) as people/source pages
-- Add: Martin Fowler as a person page
-- Add: MVVM enrichment from dedicated sources (currently from training knowledge only)
-- Add: Reactive Architecture deep-dive (Reactive Manifesto, Akka, RxJava)
-- Add: Testing strategies (unit, integration, contract testing, consumer-driven contracts)
-- Add: API design patterns (REST, GraphQL, gRPC comparisons)
+- Security architecture (OWASP, threat modelling, zero-trust, OAuth2/OIDC)
+- Functional programming patterns in architecture (immutability, pure functions, monads as design tools)
+- Database internals (B-trees, LSM trees, WAL) — relevant to Event Sourcing / CQRS read models
+- Service discovery and load balancing patterns
+- More from curated list: SRE/DevOps section, cloud-provider-specific patterns
+- Books as source pages: Clean Code (Martin), Domain-Driven Design (Evans), DDIA (Kleppmann), SICP
