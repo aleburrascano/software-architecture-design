@@ -43,7 +43,39 @@ Find: orphans, contradictions, missing cross-refs, index drift. Discuss before b
 ## Wiki Style & Refresh Policy
 
 ### Voice and structure
-<describe the wiki's voice, tone, page templates, what lives in concepts/ vs topics/, naming conventions, etc.>
+
+**Voice:** Neutral, encyclopedic, concise. Third person. Present tense for definitions; past tense only when discussing history. No filler phrases ("It is worth noting that…"). Every claim traces to a source.
+
+**Folder guide:**
+- `wiki/concepts/` — one atomic idea per page (a pattern, principle, or mechanism). Name = the concept itself. Examples: `Observer Pattern.md`, `Single Responsibility Principle.md`, `Event Sourcing.md`. A concept page answers: *what is it, why does it exist, when to use it, trade-offs, related concepts.*
+- `wiki/topics/` — synthesis across multiple concepts or sources. A topic page answers a broader question: *how do these ideas fit together?* Examples: `Behavioral Patterns Overview.md`, `Layered vs Hexagonal Architecture.md`, `SOLID Principles.md`. Start here when answering queries.
+- `wiki/sources/` — one page per raw source. Captures: summary, key arguments, notable quotes, what concepts it touches, where it agrees/disagrees with other sources.
+- `wiki/people/` — notable authors and thinkers. One page per person: role, key works, notable positions.
+
+**Naming:** Title Case with spaces (Obsidian resolves wikilinks by filename). Be precise: prefer `Strategy Pattern` over `Strategy`. Avoid abbreviations in page titles.
+
+**Page template (all wiki pages):**
+```
+---
+type: concept | topic | source | person
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+sources: [list of raw/ filenames cited]
+tags: [list]
+---
+
+# Page Title
+
+One-sentence definition or thesis.
+
+## Body
+...
+
+## Related
+- [[Linked Page]] — one-line reason for the link
+```
+
+**Uncertainty:** Use `> [!question] Unverified` callout for any claim not directly supported by an ingested source.
 
 ### Refresh constraints (patch flow)
 - When applying a freshness report, edit existing wiki pages surgically. Never regenerate a wiki page from sources.
@@ -54,7 +86,7 @@ Find: orphans, contradictions, missing cross-refs, index drift. Discuss before b
 For refresh sessions, cd into this vault directory and run `claude` there. The vault's `.claude/settings.json` will set recommended defaults (model, permissions). Don't rely on the MCP connection from another cwd for refresh work.
 
 ### Recommended Claude Code settings for refresh sessions
-Model: <e.g. Sonnet 4.6 or higher>
-Thinking: <enabled / disabled>
-Effort: <low / medium / high>
+Model: claude-sonnet-4-6 or higher
+Thinking: disabled (enable for deep analysis or contradiction-finding)
+Effort: medium
 <!-- vaultkit:wiki-style:end -->

@@ -1,6 +1,7 @@
 {
   "model": "sonnet",
   "permissions": {
-    "additionalDirectories": ["raw", "wiki"]
+    "additionalDirectories": ["raw", "wiki"],
+    "allow": ["WebFetch", "WebSearch"]
   }
 }
