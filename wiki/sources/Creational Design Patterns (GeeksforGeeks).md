@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Creational Design Patterns.md
+source_path: raw/articles/Creational Design Patterns.md
 source_date:
 source_author: GeeksforGeeks / refactoring.guru
 tags: [design-pattern, creational, source]

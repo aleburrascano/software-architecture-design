@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/vertical-slice-architecture/'
 tags:
@@ -18,26 +18,26 @@ An architectural organizing principle that structures code around **features** (
 
 Traditional [[Layered Architecture]] organizes code by technical concern: all controllers in one folder, all services in another, all repositories in a third. This creates:
 
-- **High coupling between unrelated features** — the service layer for `OrderManagement` sits next to the service layer for `UserManagement`, creating temptations to share/couple code.
-- **Low cohesion within features** — the code for a single feature is scattered across multiple layers/folders.
-- **Costly cross-layer changes** — adding a field to an API response requires touching controller, service, repository, DTO, and mapping code across four directories.
-- **Friction for new developers** — finding all the code for "how orders work" requires searching multiple directories.
+- **High coupling between unrelated features** â€” the service layer for `OrderManagement` sits next to the service layer for `UserManagement`, creating temptations to share/couple code.
+- **Low cohesion within features** â€” the code for a single feature is scattered across multiple layers/folders.
+- **Costly cross-layer changes** â€” adding a field to an API response requires touching controller, service, repository, DTO, and mapping code across four directories.
+- **Friction for new developers** â€” finding all the code for "how orders work" requires searching multiple directories.
 
 ## Solution / Explanation
 
-A **Vertical Slice** groups all code for a single feature — API endpoint, business logic, data access, validation, authorization — in one place. Each feature is a self-contained slice from the top (API) to the bottom (database) of the stack.
+A **Vertical Slice** groups all code for a single feature â€” API endpoint, business logic, data access, validation, authorization â€” in one place. Each feature is a self-contained slice from the top (API) to the bottom (database) of the stack.
 
 ```
 Layered Architecture:           Vertical Slice Architecture:
-┌──────────────────┐            ┌─────────────────────────────┐
-│   Controllers    │            │  Features/                  │
-├──────────────────┤            │  ├── PlaceOrder/            │
-│   Services       │     vs     │  │   ├── PlaceOrderRequest  │
-├──────────────────┤            │  │   ├── PlaceOrderHandler  │
-│   Repositories   │            │  │   └── PlaceOrderTests    │
-└──────────────────┘            │  ├── CancelOrder/           │
-                                │  └── GetOrderStatus/        │
-                                └─────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”            â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚   Controllers    â”‚            â”‚  Features/                  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤            â”‚  â”œâ”€â”€ PlaceOrder/            â”‚
+â”‚   Services       â”‚     vs     â”‚  â”‚   â”œâ”€â”€ PlaceOrderRequest  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤            â”‚  â”‚   â”œâ”€â”€ PlaceOrderHandler  â”‚
+â”‚   Repositories   â”‚            â”‚  â”‚   â””â”€â”€ PlaceOrderTests    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜            â”‚  â”œâ”€â”€ CancelOrder/           â”‚
+                                â”‚  â””â”€â”€ GetOrderStatus/        â”‚
+                                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ### CQRS Alignment
@@ -48,11 +48,11 @@ Vertical slices pair naturally with [[CQRS]]. Each command or query is its own s
 
 Instead of introducing abstractions upfront (generic repositories, base services), each slice uses the simplest approach that works. Abstractions are introduced only when multiple slices genuinely need to share behavior.
 
-> "Each slice decides for itself how to handle its request. One slice might use CQRS, another might use a transaction script, another might hit the database directly." — Jimmy Bogard
+> "Each slice decides for itself how to handle its request. One slice might use CQRS, another might use a transaction script, another might hit the database directly." â€” Jimmy Bogard
 
-### MediatR and Vertical Slices
+### Mediator Libraries and Vertical Slices
 
-In .NET, vertical slices are commonly implemented with **MediatR** — each slice is a `Command` or `Query` object handled by a single `Handler` class. This makes the slice self-contained and discoverable.
+A common implementation approach pairs vertical slices with a mediator library â€” each slice is a `Command` or `Query` object handled by a single `Handler` class. This makes the slice self-contained and discoverable. Mediator libraries for this purpose exist in most ecosystems.
 
 ## When to Use
 
@@ -69,7 +69,7 @@ May not be ideal when:
 
 | Benefit | Drawback |
 |---------|---------|
-| High cohesion — all feature code in one place | Risk of duplicating utilities across slices |
+| High cohesion â€” all feature code in one place | Risk of duplicating utilities across slices |
 | Low coupling between unrelated features | Requires discipline to avoid cross-slice dependencies |
 | Easy to understand scope of a feature | Less structure can feel chaotic without conventions |
 | Natural fit for CQRS | Shared business rules need explicit extraction |
@@ -77,8 +77,8 @@ May not be ideal when:
 
 ## Related
 
-- [[CQRS]] — commands and queries map naturally to individual slices
-- [[Clean Architecture]] — an alternative organizing approach; slices can live within a clean arch structure
-- [[Layered Architecture]] — the traditional alternative that vertical slices move away from
-- [[Modular Monolith]] — vertical slices can organize features within modules
-- [[Domain-Driven Design]] — each slice aligns with a use case in a bounded context
+- [[CQRS]] â€” commands and queries map naturally to individual slices
+- [[Clean Architecture]] â€” an alternative organizing approach; slices can live within a clean arch structure
+- [[Layered Architecture]] â€” the traditional alternative that vertical slices move away from
+- [[Modular Monolith]] â€” vertical slices can organize features within modules
+- [[Domain-Driven Design]] â€” each slice aligns with a use case in a bounded context

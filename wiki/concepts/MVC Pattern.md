@@ -1,11 +1,11 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Software architecture 1.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Software architecture 1.md"
   - "https://www.geeksforgeeks.org/system-design/mvc-design-pattern/"
 tags:
   - architecture
@@ -53,7 +53,7 @@ User interaction → View receives input → Controller processes it → Control
 
 ## When to Use
 
-- Web applications with clear request/response cycles (Rails, Django, Spring MVC, ASP.NET MVC).
+- Web applications with clear request/response cycles — virtually every web framework across languages implements MVC or a close variant.
 - Applications where UI concerns need to be tested and changed independently of business logic.
 - As a starting point for applications that may later need richer patterns ([[Domain-Driven Design]], [[Clean Architecture]]).
 - Simpler CRUD applications where business logic is not complex.
@@ -84,8 +84,7 @@ User interaction → View receives input → Controller processes it → Control
 
 - **E-commerce search:** User submits search → Controller receives request → invokes `ProductModel.search(query)` → passes results to `ProductListView` → renders product grid.
 - **Student information system:** Model stores name/roll number; View displays details; Controller mediates updates.
-- Used in virtually every major web framework: Ruby on Rails, Django, Laravel, Spring MVC, ASP.NET Core MVC, Express.js (loosely).
-- Implementation languages: Java, Python, C++, JavaScript — the pattern is language-agnostic.
+- Used in virtually every major web framework across ecosystems — the pattern is language-agnostic and applies regardless of runtime or stack.
 
 ## Related
 

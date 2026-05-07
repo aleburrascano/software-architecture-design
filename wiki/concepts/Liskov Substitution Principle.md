@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/system-design/liskov-substitution-principle/"
   - "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"
 tags:
@@ -56,8 +56,7 @@ A `Square` is mathematically a special case of `Rectangle` (all sides equal). Bu
 
 ### Violation — Rectangle/Square
 
-```python
-class Rectangle:
+````nclass Rectangle:
     def set_width(self, w: int): self._w = w
     def set_height(self, h: int): self._h = h
     def area(self) -> int: return self._w * self._h
@@ -81,8 +80,7 @@ def test_resize(r: Rectangle):
 
 ### Conforming — separate abstractions
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class Shape(ABC):
     @abstractmethod
@@ -104,8 +102,7 @@ Both share only the `area` abstraction — no inherited mutation semantics to vi
 
 ### Violation — Bird/Penguin
 
-```python
-class Bird:
+````nclass Bird:
     def fly(self): print("flap wings")
 
 class Penguin(Bird):
@@ -121,8 +118,7 @@ make_all_fly([Duck(), Eagle(), Penguin()])  # RuntimeError
 
 ### Conforming — refactored abstraction
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class Bird(ABC):
     pass   # only shared bird properties (name, habitat, etc.)

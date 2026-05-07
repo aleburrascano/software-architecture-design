@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/flyweight
@@ -82,8 +82,7 @@ Apply Flyweight only when all of the following hold:
 
 ## Code Example
 
-```python
-class TreeType:
+````nclass TreeType:
     """Flyweight: shared intrinsic state (species, texture, colour).
     Imagine self.texture is a large bitmap loaded from disk."""
     def __init__(self, name: str, colour: str, texture: str):
@@ -128,8 +127,7 @@ print(f"Tree instances:     {len(forest)}")                 # 10000
 
 Icon caching example (GfG illustration):
 
-```java
-// Flyweight: FileIcon stores shared intrinsic state
+````n// Flyweight: FileIcon stores shared intrinsic state
 class FileIcon implements Icon {
     private final String type;
     private final String imageName;   // heavy: loaded from disk once

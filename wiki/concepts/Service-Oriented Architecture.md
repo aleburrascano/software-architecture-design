@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/Software design.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/Software design.md"
   - "https://www.geeksforgeeks.org/system-design/service-oriented-architecture/"
 tags:
   - architecture

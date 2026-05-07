@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/domain-driven-design/bounded-context/'
   - 'https://awesome-architecture.com/domain-driven-design/domain-driven-design/'
@@ -71,6 +71,23 @@ A collaborative design tool (from the DDD Crew community) for capturing: purpose
 | Enables independent team ownership | Context mapping relationships must be documented and maintained |
 | Aligns with Conway's Law | Drawing the right boundary is difficult and often iterative |
 | Makes ubiquitous language explicit | Shared data across contexts requires careful synchronization |
+
+## Context Mapping in Practice (DDD SLR)
+
+A 2023 systematic literature review of 36 DDD studies found that **Bounded Context** is the most frequently applied strategic DDD pattern in practice, and **Context Mapping** is its most critical operational activity. Key practical findings:
+
+- Context maps tend to drift from reality as teams evolve; they require active maintenance, not one-time documentation.
+- The most common relationship in real systems is **Customer-Supplier** (upstream team sets the contract; downstream adapts).
+- **Anti-Corruption Layers** are heavily used at legacy system boundaries to prevent domain model pollution.
+
+### ACL Example (Laribee — Insurance Domain)
+
+When a new insurance policy management context integrates with a legacy claims processing system, the legacy system uses the term "Contract" for what the new domain calls "Policy", and "Claimant" for "InsuredPerson". An ACL translates:
+
+- Incoming: `LegacyContract` → `Policy` (mapping field by field, resolving semantic differences)
+- Outgoing: `Policy.submit()` → legacy `Contract.finalize()` call with required field transformations
+
+Without the ACL, the new model would gradually conform to legacy terminology (the "Conformist" anti-pattern), polluting the ubiquitous language.
 
 ## Related
 

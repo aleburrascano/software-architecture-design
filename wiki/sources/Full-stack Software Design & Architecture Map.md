@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+source_path: "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
 source_date: 2019-09-28
 source_author: "[[Khalil Stemmler]]"
 tags:

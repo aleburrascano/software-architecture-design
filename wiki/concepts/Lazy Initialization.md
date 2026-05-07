@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -47,8 +47,7 @@ Lazy Initialization is a technique, not a class structure. It typically manifest
 
 **Virtual Proxy:** A lightweight proxy object stands in for the real heavyweight object. The proxy implements the same interface, but creates the real object only on the first method call. Callers never know whether they hold a proxy or the real thing.
 
-```java
-class ContactListProxyImpl implements ContactList {
+````nclass ContactListProxyImpl implements ContactList {
     private ContactList contactList;
 
     public List<Employee> getEmployeeList() {
@@ -65,8 +64,7 @@ class ContactListProxyImpl implements ContactList {
 
 **Value Holder:** A container object wraps a value. Its `get()` method triggers initialisation if the value hasn't been computed yet. Similar to `Lazy<T>` in .NET, `lazy` in Kotlin, and Guava's `Suppliers.memoize()` in Java. Drawback: users must know a value holder is expected, requiring API awareness.
 
-```python
-class ValueHolder:
+````nclass ValueHolder:
     def __init__(self, value_retrieval):
         self.value = None
         self.value_retrieval = value_retrieval
@@ -111,16 +109,14 @@ Avoid lazy initialisation when:
 ## Thread Safety Approaches
 
 **Synchronized method (simple, but contended):**
-```java
-synchronized Resource getResource() {
+````nsynchronized Resource getResource() {
     if (resource == null) resource = new Resource();
     return resource;
 }
 ```
 
 **Double-checked locking (DCL) with `volatile`:**
-```java
-volatile Resource resource;
+````nvolatile Resource resource;
 
 Resource getResource() {
     if (resource == null) {
@@ -134,8 +130,7 @@ Resource getResource() {
 Requires `volatile` to prevent the JVM from reordering the write to `resource` before the constructor completes. GfG recommends this for high-concurrency scenarios: "check before acquiring lock, re-check after acquiring to prevent race conditions."
 
 **Initialization-on-demand holder (Java — preferred):**
-```java
-class Holder {
+````nclass Holder {
     private static class Inner {
         static final Resource INSTANCE = new Resource();
     }
@@ -145,22 +140,19 @@ class Holder {
 The JVM class loader guarantees `Inner` is initialised exactly once, thread-safely, without explicit locking.
 
 **.NET `Lazy<T>`:**
-```csharp
-Lazy<Resource> _lazy = new Lazy<Resource>(() => new Resource());
+````nLazy<Resource> _lazy = new Lazy<Resource>(() => new Resource());
 Resource r = _lazy.Value;   // thread-safe by default
 ```
 
 **Kotlin `lazy` delegate:**
-```kotlin
-val resource: Resource by lazy { Resource() }   // default: SYNCHRONIZED mode
+````nval resource: Resource by lazy { Resource() }   // default: SYNCHRONIZED mode
 ```
 
 ## Code Example
 
 Python — lazy-initialised template in a report generator:
 
-```python
-class ReportGenerator:
+````nclass ReportGenerator:
     def __init__(self):
         self._template = None  # lazily initialised
 
@@ -180,8 +172,7 @@ class ReportGenerator:
 
 Java — thread-safe lazy init with double-checked locking (car type cache, from GfG):
 
-```java
-public static Car getCarByTypeNameHighConcurrentVersion(CarType type) {
+````npublic static Car getCarByTypeNameHighConcurrentVersion(CarType type) {
     if (!types.containsKey(type)) {
         synchronized (types) {
             if (!types.containsKey(type)) {

@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -67,8 +67,7 @@ Three implementation approaches exist for achieving this:
 
 ## Code Example
 
-```python
-class DocumentMemento:
+````nclass DocumentMemento:
     """Opaque to the Caretaker — only Document calls get_saved_content()."""
     def __init__(self, content: str):
         self._content = content

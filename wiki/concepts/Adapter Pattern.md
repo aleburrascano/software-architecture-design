@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/adapter
@@ -97,8 +97,7 @@ The adapter acts as a translator: client calls it via the target interface; the 
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Target interface — what our application expects
 class Printer(ABC):

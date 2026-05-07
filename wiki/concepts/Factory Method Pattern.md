@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -88,8 +88,7 @@ The Creator class often contains other methods that call `createProduct()` inter
 
 Python — Vehicle factory:
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Product Interface
 class Vehicle(ABC):

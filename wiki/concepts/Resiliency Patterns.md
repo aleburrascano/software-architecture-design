@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/microservices/resiliency/resiliency/'
 tags:
@@ -53,8 +53,7 @@ See [[Backpressure]]. Consumers signal capacity limits to producers, preventing 
 
 **Polly** is the standard .NET resilience library, providing fluent configuration for all the above patterns:
 
-```csharp
-var pipeline = new ResiliencePipelineBuilder()
+````nvar pipeline = new ResiliencePipelineBuilder()
     .AddRetry(new RetryStrategyOptions { MaxRetryAttempts = 3, Delay = TimeSpan.FromSeconds(1) })
     .AddCircuitBreaker(new CircuitBreakerStrategyOptions())
     .AddTimeout(TimeSpan.FromSeconds(5))

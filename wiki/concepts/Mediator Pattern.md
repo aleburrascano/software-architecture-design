@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -69,8 +69,7 @@ The mediator knows about all colleagues; colleagues know only the mediator. The 
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class AirTrafficControl(ABC):
     @abstractmethod

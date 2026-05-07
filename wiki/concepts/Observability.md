@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/microservices/observability/observability/'
 tags:
@@ -87,9 +87,28 @@ Observability is a baseline requirement for any production distributed system. I
 | Supports SLO-based reliability engineering | Data volume from logs/traces requires cost management |
 | Tool-agnostic with OpenTelemetry | Cultural shift required — teams must instrument proactively |
 
+## High-Cardinality Data
+
+Traditional monitoring relies on low-cardinality aggregates (avg latency, total error count). Observability tools like Honeycomb argue that **high-cardinality data** — attributes with many unique values such as user ID, trace ID, request path, tenant, or customer tier — are the key to debugging unknown failure modes.
+
+Where a metric asks "what is the average latency for `/checkout`?", a high-cardinality trace allows "what is the P99 latency for premium users in EU region using iOS?" — a question you could not pre-define in a dashboard.
+
+## Core Analysis Loop
+
+Observability enables an iterative debugging workflow:
+
+1. **Observe** — detect an anomaly or symptom via alerts, SLO burn rate, or direct inspection.
+2. **Hypothesize** — form a theory about root cause based on the available data.
+3. **Test** — query logs, traces, and metrics to confirm or refute the hypothesis.
+4. **Fix** — remediate and verify the resolution closes the anomaly.
+
+This loop works without deploying new code or adding new instrumentation — a key distinction from traditional monitoring.
+
 ## Related
 
 - [[Distributed Tracing]] — one of the three pillars; deep-dive concept
 - [[Microservices Architecture]] — primary context where observability becomes critical
 - [[Service Mesh]] — service meshes emit observability data automatically
 - [[Sidecar Pattern]] — telemetry sidecars (OpenTelemetry Collector) collect and forward data
+- [[Observability Implementation Guide]] — actionable implementation roadmap across all three pillars
+- [[Self-Healing Systems]] — extends observability from passive detection to active autonomous remediation

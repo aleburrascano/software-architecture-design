@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Design Patterns Tutorial.md
+source_path: raw/articles/Design Patterns Tutorial.md
 source_date: 2023-12-05
 source_author: GeeksforGeeks
 tags: [design-pattern, source]

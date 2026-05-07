@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -68,8 +68,7 @@ Arrange handlers in a linked chain. Each handler holds a reference to the **next
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class SupportHandler(ABC):
     def __init__(self):
@@ -117,13 +116,13 @@ l1.handle("UNKNOWN")       # Request 'UNKNOWN' could not be handled.
 
 ## Real-World Examples
 
-- **Web framework middleware** — Express.js, ASP.NET Core, and Django middleware chains: each middleware calls `next()` to pass the request forward. Authentication, CORS, logging, compression, and routing are all distinct handlers in sequence.
+- **Web framework middleware** — most web frameworks implement middleware as a Chain of Responsibility: each middleware calls `next()` to pass the request forward. Authentication, CORS, logging, compression, and routing are all distinct handlers in sequence.
 - **Customer support escalation** — Level 1 support handles basic questions; unresolved tickets pass to Level 2 (intermediate), then Level 3 (critical/engineering). Each level decides to resolve or escalate.
 - **GUI event bubbling** — a mouse click on a button propagates upward through the component tree: button → panel → window → application. The first handler that consumes the event stops propagation.
 - **Multi-level logging** — a logging framework routes log entries by severity: DEBUG → handler that writes to file; WARN → handler that sends alerts; ERROR → handler that pages on-call engineers.
 - **Security permission checks** — a request passes through authentication → authorization → rate limiting → input validation handlers before reaching the business logic.
 - **Approval workflows** — a purchase order is approved by a team lead (small amounts), manager (medium), director (large), or CFO (very large), with each approver escalating if the amount exceeds their limit.
-- **Java Servlet filters** — `javax.servlet.Filter` chain processes HTTP requests through a sequence of filters before reaching the servlet.
+- **HTTP filter pipelines** — server-side frameworks process HTTP requests through a sequence of filters before reaching the handler, with each filter deciding to continue or short-circuit.
 
 ## Related
 

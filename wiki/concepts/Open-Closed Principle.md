@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
-  - "raw/Software design.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/Software design.md"
   - "https://www.geeksforgeeks.org/system-design/open-closed-principle/"
   - "https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html"
   - "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"
@@ -64,8 +64,7 @@ A payment processor: rather than modifying the original `PaymentProcessor` class
 
 ### Violation — if/elif chain on type tags
 
-```python
-class DiscountCalculator:
+````nclass DiscountCalculator:
     def calculate(self, order: dict) -> float:
         if order["type"] == "regular":
             return order["total"] * 0.0
@@ -80,8 +79,7 @@ Adding a "student" discount requires editing `DiscountCalculator`, re-testing th
 
 ### Conforming — Strategy pattern
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class DiscountStrategy(ABC):
     @abstractmethod
@@ -115,8 +113,7 @@ class DiscountCalculator:
 
 ### Java example — payment processing
 
-```java
-// Abstraction (stable)
+````n// Abstraction (stable)
 interface PaymentProcessor {
     void process(String recipient, double amount);
 }

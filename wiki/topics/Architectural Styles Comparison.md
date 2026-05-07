@@ -1,12 +1,12 @@
----
+﻿---
 type: topic
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What is Software Architecture A Comprehensive Guide.md"
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Software architecture 1.md"
+  - "raw/articles/What is Software Architecture A Comprehensive Guide.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Software architecture 1.md"
 tags:
   - architecture
   - topic

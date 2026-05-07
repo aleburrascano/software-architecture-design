@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/system-design/dependency-inversion-principle-in-software-engineering/"
   - "https://www.geeksforgeeks.org/system-design/dependecy-inversion-principle-solid/"
   - "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"
@@ -79,8 +79,7 @@ A development team depends on an abstract version control interface (`commit()`,
 
 ### Violation
 
-```python
-class MySQLUserRepository:
+````nclass MySQLUserRepository:
     def find(self, user_id: int) -> dict:
         # raw SQL query against MySQL
         ...
@@ -97,8 +96,7 @@ class UserService:
 
 ### Conforming
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class IUserRepository(ABC):
     @abstractmethod
@@ -132,8 +130,7 @@ service = UserService(InMemoryUserRepository())
 
 ### Java example — Manager with workers
 
-```java
-// Violation: Manager depends on concrete types
+````n// Violation: Manager depends on concrete types
 class Manager {
     private List<Developer> developers = new ArrayList<>();
     private List<Designer> designers = new ArrayList<>();

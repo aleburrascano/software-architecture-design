@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
   - "https://www.geeksforgeeks.org/system-design/repository-design-pattern/"
 tags:
   - architecture
@@ -85,7 +85,7 @@ The concrete repository can be swapped (e.g., `InMemoryProductRepository` in tes
 ## Real-World Usage
 
 - **Online stores:** Product display fetches product entities via `ProductRepository.findById()`; the repository handles database queries without exposing SQL to the presentation layer.
-- Ubiquitous in layered enterprise applications: Java Spring Data (`JpaRepository`), .NET Entity Framework (`IRepository<T>`), Rails Active Record (acts as a repository).
+- Ubiquitous in layered enterprise applications across ecosystems — most mature ORM and data-access libraries implement or encourage the repository pattern.
 - Central building block in DDD: repositories are defined per Aggregate Root — one `OrderRepository`, one `CustomerRepository`, not one universal `DataRepository`.
 - In [[Clean Architecture]] and [[Hexagonal Architecture]], the repository interface is defined in the inner (use case) layer and implemented by an outer-layer adapter.
 

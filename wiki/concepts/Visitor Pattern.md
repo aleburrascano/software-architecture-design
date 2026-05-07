@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -75,8 +75,7 @@ Standard single dispatch selects a method based on the receiver's type. Visitor 
 
 ## Code Example
 
-```java
-// Visitor interface — one visit method per concrete element type
+````n// Visitor interface — one visit method per concrete element type
 interface ShapeVisitor {
     void visit(Circle circle);
     void visit(Square square);

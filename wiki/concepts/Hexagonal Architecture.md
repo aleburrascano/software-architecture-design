@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
   - "https://www.geeksforgeeks.org/hexagonal-architecture-in-java/"
 tags:
   - architecture
@@ -61,12 +61,12 @@ The hexagon shape is representational: the faces of the hexagon represent differ
 | **Secondary (Driven) Adapter** | Implements an outbound port; responds to application requests. Examples: `PostgresOrderRepository`, Kafka publisher, email gateway |
 | **Application Core** | Domain model + use cases — zero dependencies on any adapter |
 
-### Practical Example (Spring Boot)
+### Practical Example
 
-- `CakeService` (inbound port) — interface defining what the application can do
-- `CakeRepository` (outbound port) — interface for data persistence
-- `CakeRestController` (primary adapter) — HTTP → CakeService calls
-- `CakeRepositoryImpl` (secondary adapter) — CakeRepository → JPA/database
+- `OrderService` (inbound port) — interface defining what the application can do
+- `OrderRepository` (outbound port) — interface for data persistence
+- `OrderRestController` (primary adapter) — HTTP → OrderService calls
+- `SqlOrderRepository` (secondary adapter) — OrderRepository → database implementation
 
 ## When to Use
 
@@ -90,6 +90,19 @@ The hexagon shape is representational: the faces of the hexagon represent differ
 - The port/adapter distinction requires discipline to maintain.
 - Risk of creating overly thin adapters that just delegate — adding complexity without value.
 
+## DDD Integration (Domain-Driven Hexagon)
+
+Sairyss's `domain-driven-hexagon` repository demonstrates the synthesis of Hexagonal Architecture and DDD:
+
+- The **domain layer** (innermost) contains Aggregates, Entities, Value Objects, and Domain Events — zero infrastructure dependencies.
+- **Driving ports** (inbound) are defined by domain needs, not delivery mechanism needs: `CreateOrderUseCase` is a port; the REST controller is an adapter that calls it.
+- **Driven ports** (outbound) are defined by what the domain requires: `OrderRepository` is a port; `PostgresOrderRepository` is an adapter.
+- **Port types summary:**
+  - *Driving (primary/inbound):* HTTP controllers, CLI handlers, message consumers, test harnesses — all drive the application through inbound ports.
+  - *Driven (secondary/outbound):* Database repositories, email senders, external API clients, message publishers — all implement outbound ports defined by the application core.
+
+**Testing benefit:** The domain layer and application services can be fully unit-tested using in-memory adapter implementations for all driven ports — no database, no broker, no network required. Infrastructure adapters are tested independently with integration tests.
+
 ## Relationship to Clean Architecture
 
 [[Clean Architecture]] is a formalization and extension of Hexagonal Architecture:
@@ -105,10 +118,10 @@ Both enforce the same inward-pointing dependency rule.
 
 ## Real-World Usage
 
-- Widely adopted in Java (Spring with interface-based repositories), C# (.NET with DI containers), and TypeScript/Node.js.
+- Widely adopted across ecosystems — the pattern applies equally regardless of language or framework.
 - The pattern underlies many enterprise application frameworks' recommended project structure.
 - Used when a team needs to write comprehensive unit tests for business logic without a live database.
-- Spring Boot applications naturally follow this pattern when using interface-based services and repositories.
+- Frameworks that support dependency injection naturally enable this pattern by allowing adapters to be swapped at configuration time.
 
 ## Related
 

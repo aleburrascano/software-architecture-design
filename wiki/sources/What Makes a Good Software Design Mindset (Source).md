@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/What Makes a Good Software Design Mindset.md
+source_path: raw/articles/What Makes a Good Software Design Mindset.md
 source_date: 2020-03-17
 source_author: Duy Pham
 tags:

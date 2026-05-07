@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
   - "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
 tags:
   - architecture

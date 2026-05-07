@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/facade
@@ -74,8 +74,7 @@ There is no formal interface requirement for Facade — it is typically a concre
 
 ## Code Example
 
-```python
-# Complex subsystem classes — each has its own interface
+````n# Complex subsystem classes — each has its own interface
 class VideoDecoder:
     def decode(self, file: str) -> str:
         print(f"[VideoDecoder] Decoding {file}")
@@ -121,8 +120,7 @@ player.play("movie.mp4", quality=720)
 
 Hotel example (GfG illustration):
 
-```python
-class VegRestaurant:
+````nclass VegRestaurant:
     def get_menus(self) -> list:
         return ["Dal", "Paneer", "Roti"]
 

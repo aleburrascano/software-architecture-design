@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
   - "https://www.geeksforgeeks.org/system-design/event-sourcing-pattern/"
   - "https://martinfowler.com/eaaDev/EventSourcing.html"
 tags:
@@ -105,7 +105,7 @@ A subtlety often overlooked:
 - **Healthcare:** Documenting patient interactions, treatments, and medical procedures in EHR systems — immutable patient history.
 - **E-commerce:** `OrderPlaced`, `PaymentReceived`, `ItemShipped`, `OrderCancelled` — full lifecycle traceable; replay for new analytics projections.
 - **Event registration systems:** `UserRegistered`, `RegistrationCancelled` — subscribers handle notifications, ensuring timely user communication without tight coupling.
-- Frameworks: Axon Framework (Java), EventStoreDB, Marten (for .NET with PostgreSQL), Broadway (Elixir).
+- Event sourcing frameworks and libraries exist across multiple languages and ecosystems — consult the sources section for specific examples.
 
 ## Comparison: Event Sourcing vs. CQRS
 
@@ -115,8 +115,27 @@ A subtlety often overlooked:
 | Independent? | Yes — can use ES without CQRS | Yes — can use CQRS without ES |
 | Together | ES provides the write-side event log; CQRS query side reads projections built from that log |
 
+## Event Versioning
+
+As the domain model evolves, old events in the store must remain readable. Three strategies:
+
+- **Explicit version field:** Each event carries a `version` or `schemaVersion` field; the aggregate has a handler per version.
+- **Upcasting chain:** Transform old event payloads to the current schema on read, before they reach the aggregate — see [[Event Upcasting]]. Keeps aggregate code clean; history is never modified.
+- **Lazy migration:** Keep old event types as-is; handle them alongside new types until the event log is fully migrated.
+
+## Dual-Write Solution
+
+A frequently overlooked benefit (microservices.io framing): Event Sourcing eliminates the **dual-write problem**. Without ES, a service must atomically update its database *and* publish a message to a broker — these cannot be in the same ACID transaction, risking lost events. With ES, the event store is the single write target; the event is simultaneously the state change and the publishable message, which the [[Outbox Pattern]] or event store streaming can forward reliably.
+
+## Framework References
+
+This pattern is implemented by frameworks across multiple languages and ecosystems. Consult the sources section for specific library examples.
+
 ## Related
 
 - [[CQRS]] — Event Sourcing's write model naturally feeds CQRS projections; the two are frequently paired
+- [[Event Sourcing and CQRS Integration]] — deep-dive on the combined ES + CQRS pattern
 - [[Event-Driven Architecture]] — events emitted by the event store can be published to an event bus for downstream consumers
 - [[Domain-Driven Design]] — domain events are a core DDD concept; ES operationalizes them as the persistence mechanism
+- [[Event Upcasting]] — handling schema evolution for events in the event store
+- [[Outbox Pattern]] — reliable event publishing from the write side

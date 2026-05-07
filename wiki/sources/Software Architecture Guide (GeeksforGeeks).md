@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Software Architecture Guide.md
+source_path: raw/articles/Software Architecture Guide.md
 source_date: 2019-08-01
 source_author: "[[Martin Fowler]]"
 tags:

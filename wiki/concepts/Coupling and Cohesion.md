@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - raw/What Makes a Good Software Design Mindset.md
-  - raw/Software design.md
+  - raw/articles/What Makes a Good Software Design Mindset.md
+  - raw/articles/Software design.md
 tags:
   - design
   - principles

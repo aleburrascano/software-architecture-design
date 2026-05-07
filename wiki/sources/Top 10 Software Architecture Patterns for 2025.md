@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Top 10 Software Architecture & Design Patterns for 2025.md
+source_path: raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md
 source_date: 2026-04-09
 source_author:
 tags:

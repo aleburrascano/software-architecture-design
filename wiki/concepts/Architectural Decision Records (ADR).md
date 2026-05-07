@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - raw/Software architecture 1.md
+  - raw/articles/Software architecture 1.md
 tags:
   - architecture
   - documentation
@@ -53,6 +53,32 @@ The architect's responsibility includes:
 1. Providing both technical and business justifications in each ADR
 2. Ensuring decisions have tangible business value
 3. Communicating decisions to relevant stakeholders with a link to the centralized record
+
+## ADR Templates
+
+Several standard formats exist; choose the one that fits team culture:
+
+| Format | Structure | Best For |
+|--------|-----------|----------|
+| **Nygard** (original) | Title, Status, Context, Decision, Consequences | Concise, minimal overhead |
+| **Y-Statement** | One sentence: "In the context of X, facing Y, we decided Z, to achieve Q, accepting R" | Rapid capture, PR comments |
+| **RFC** | Motivation, Detailed Design, Drawbacks, Alternatives, Unresolved Questions | Large cross-team proposals |
+| **MADR** (Markdown ADR) | Title, Status, Context, Considered Options, Decision Outcome, Pros/Cons per option | Systematic option comparison |
+
+### ADR Lifecycle States
+
+- **Proposed** — under discussion; not yet decided.
+- **Accepted** — decision is made and in effect.
+- **Deprecated** — the decision is no longer relevant (superseded technology, changed requirements).
+- **Superseded** — replaced by a newer ADR; the old ADR links to its successor.
+
+New ADRs supersede old ones — the history of thinking is preserved, not overwritten.
+
+## Tooling
+
+- **adr-tools** (npryce/adr-tools) — CLI for creating, listing, and linking ADRs in a `doc/adr/` directory.
+- **Log4brains** — generates a browsable web knowledge base from ADR markdown files.
+- **ADR Manager** (VS Code extension) — GUI for creating and editing ADRs.
 
 ## Related
 

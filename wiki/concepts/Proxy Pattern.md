@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/proxy
@@ -93,8 +93,7 @@ class Proxy implements Subject:
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Service Interface
 class Image(ABC):
@@ -133,8 +132,7 @@ image.display()   # no loading; delegates directly
 
 Caching proxy example:
 
-```python
-class CachingDatabaseProxy:
+````nclass CachingDatabaseProxy:
     def __init__(self, real_db):
         self._real = real_db
         self._cache: dict = {}

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/domain-driven-design/aggregation/'
   - 'https://awesome-architecture.com/domain-driven-design/domain-driven-design/'
@@ -48,6 +48,8 @@ Business rules that must always hold true within the aggregate boundary. Example
 - **Reference other aggregates by ID, not by object.** Cross-aggregate navigation happens outside the aggregate, via repository lookups.
 - **Design around true invariants.** Ask: "What must be consistent immediately?" Only put objects that share an invariant into the same aggregate.
 - **Use eventual consistency between aggregates.** A command on Aggregate A publishes a domain event; Aggregate B handles it asynchronously.
+- **Law of Demeter applied (Laribee: "Don't talk to strangers"):** External code should only call methods on the Aggregate Root — never traverse into internal entities to call their methods. `order.getLine(id).cancel()` violates this; `order.cancelLine(id)` respects it. This ensures all invariant checks flow through the root.
+- **Behavior over data:** Aggregates should expose operations, not data getters. An `Order` should have `addItem(product, qty)` rather than `getItems().add(...)`. Tests should assert behavioral outcomes, not internal state fields.
 
 ## Key Components
 

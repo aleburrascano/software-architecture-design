@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/bridge
@@ -90,8 +90,7 @@ The key structural element is the field `impl: Implementor` inside Abstraction �
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Implementation hierarchy
 class Workshop(ABC):
@@ -134,8 +133,7 @@ Bike(Produce(), Assemble()).manufacture()  # Bike: Producing Bike  Assembling Bi
 
 Classic shapes example — decouples shape from renderer:
 
-```python
-class Renderer(ABC):
+````nclass Renderer(ABC):
     @abstractmethod
     def render_circle(self, radius: float): ...
 

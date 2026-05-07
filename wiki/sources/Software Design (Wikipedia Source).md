@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Software design.md
+source_path: raw/articles/Software design.md
 source_date:
 source_author: Wikipedia contributors
 tags:

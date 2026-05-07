@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/What is Software Architecture A Comprehensive Guide.md
+source_path: raw/articles/What is Software Architecture A Comprehensive Guide.md
 source_date: 2026-02-18
 source_author: "[[Eldad Palachi]]"
 tags:

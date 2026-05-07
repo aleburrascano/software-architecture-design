@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - raw/Software architecture 1.md
+  - raw/articles/Software architecture 1.md
 tags:
   - architecture
   - design

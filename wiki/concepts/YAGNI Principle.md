@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/software-engineering/what-is-yagni-principle-you-arent-gonna-need-it/"
 tags:
   - design-principle
@@ -77,8 +77,7 @@ The resolution: add abstractions and extension points when you have concrete evi
 
 ### Violation — speculative plugin system
 
-```python
-class ReportGenerator:
+````nclass ReportGenerator:
     """Generates reports. Supports pluggable formatters for future formats."""
     def __init__(self, formatter=None, cache_backend=None,
                  output_channel=None, locale=None, theme=None):
@@ -98,8 +97,7 @@ The team spent a week building the plugin system. The product currently has one 
 
 ### YAGNI-conforming
 
-```python
-def generate_report(data: dict) -> str:
+````ndef generate_report(data: dict) -> str:
     """Generate a plain-text report from data."""
     lines = [f"{k}: {v}" for k, v in data.items()]
     return "\n".join(lines)
@@ -109,8 +107,7 @@ When a second format is actually needed, the abstraction can be introduced with 
 
 ### Violation — generic base class for a single implementation
 
-```java
-public abstract class AbstractReportService {
+````npublic abstract class AbstractReportService {
     protected abstract String format(Map<String, Object> data);
     protected abstract void validate(Map<String, Object> data);
     // ... eight more abstract methods
@@ -133,8 +130,7 @@ public class PlainTextReportService extends AbstractReportService {
 
 ### YAGNI-conforming
 
-```java
-public class ReportService {
+````npublic class ReportService {
     public String generate(Map<String, Object> data) {
         validate(data);
         return format(data);

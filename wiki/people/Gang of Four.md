@@ -1,9 +1,9 @@
----
+﻿---
 type: person
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
 tags:
   - people
   - design-pattern

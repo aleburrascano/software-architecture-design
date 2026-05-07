@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -67,8 +67,7 @@ Extract traversal logic into a separate **Iterator** object. The iterator mainta
 
 ## Code Example
 
-```java
-import java.util.*;
+````nimport java.util.*;
 
 class Employee {
     private String name;

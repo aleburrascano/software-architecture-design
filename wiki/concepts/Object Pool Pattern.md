@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -101,8 +101,7 @@ Validate objects on acquisition (not just on release) because objects can become
 
 Java — generic ObjectPool with expiry (GfG):
 
-```java
-abstract class ObjectPool<T> {
+````nabstract class ObjectPool<T> {
     private long deadTime = 50000; // 50 seconds
     private Hashtable<T, Long> locked = new Hashtable<>();
     private Hashtable<T, Long> unlocked = new Hashtable<>();
@@ -142,8 +141,7 @@ abstract class ObjectPool<T> {
 
 Python — thread-safe pool with BlockingQueue:
 
-```python
-import threading
+````nimport threading
 from queue import Queue
 
 class DatabaseConnection:
@@ -197,12 +195,11 @@ pool.release(conn)
 
 ## Real-World Examples
 
-- **JDBC Connection Pools** — HikariCP, Apache DBCP, c3p0 all implement Object Pool for database connections. HikariCP is the default pool in Spring Boot.
-- **Java `ThreadPoolExecutor`** — the JVM's standard thread pool is an Object Pool for `Thread` objects; `Executors.newFixedThreadPool(n)` creates a pool of n reusable threads.
-- **Apache Commons Pool** — generic pooling library with `PooledObjectFactory` interface, used by Jedis (Redis client), Apache HttpClient, and others.
-- **HTTP connection pools** — `requests.Session` in Python, `HttpClient` in .NET, and `OkHttpClient` in Java all pool TCP connections to avoid reconnecting on every request.
+- **Database connection pools** — connection pool libraries implement Object Pool for database connections; most application frameworks include or integrate a connection pool by default.
+- **Thread pools** — most runtimes provide a built-in thread pool as an Object Pool for reusable worker threads; a fixed-size pool avoids the overhead of creating and destroying threads per task.
+- **HTTP connection pools** — HTTP client libraries pool TCP connections to avoid reconnecting on every request.
 - **Game engines** — bullet pools, particle pools, enemy pools. Creating and destroying objects per frame is too expensive; pools keep objects alive and reset them on reuse.
-- **`ByteBuffer` pools** in Netty — Netty's `PooledByteBufAllocator` pools memory buffers to avoid GC overhead in high-throughput network I/O.
+- **Buffer pools** — high-throughput network and I/O libraries pool memory buffers to avoid garbage collection overhead.
 
 ## Related
 

@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/system-design/dependency-injectiondi-design-pattern/"
   - "https://martinfowler.com/articles/injection.html"
 tags:
@@ -46,8 +46,7 @@ Every DI arrangement involves four distinct roles:
 
 #### 1. Constructor Injection (preferred)
 
-```python
-class OrderService:
+````nclass OrderService:
     def __init__(self, repo: IOrderRepository, mailer: IMailer):
         self.repo = repo
         self.mailer = mailer
@@ -57,8 +56,7 @@ Dependencies are declared in the constructor. They are immutable after construct
 
 #### 2. Setter Injection (optional dependencies)
 
-```python
-class OrderService:
+````nclass OrderService:
     def __init__(self): ...
 
     def set_notifier(self, notifier: INotifier) -> None:
@@ -69,8 +67,7 @@ Useful when a dependency is optional or when circular dependencies prevent const
 
 #### 3. Interface / Method Injection (parameter injection)
 
-```python
-def process_order(order: dict, repo: IOrderRepository) -> None:
+````ndef process_order(order: dict, repo: IOrderRepository) -> None:
     repo.save(order)
 ```
 
@@ -113,8 +110,7 @@ More important than the specific DI form chosen: **separate the configuration of
 
 ### Without DI — tightly coupled
 
-```python
-class NotificationService:
+````nclass NotificationService:
     def __init__(self):
         self.sender = SMTPEmailSender()   # hardcoded — impossible to swap in tests
 
@@ -124,8 +120,7 @@ class NotificationService:
 
 ### With DI — loosely coupled
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class IMessageSender(ABC):
     @abstractmethod

@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
-  - "raw/Software design.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/Software design.md"
   - "https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/"
 tags:
   - design-principle
@@ -66,8 +66,7 @@ Not all repetition is a DRY violation. Duplicating code across **test** and **pr
 
 ### Violation — duplicated business rule
 
-```python
-class InvoiceService:
+````nclass InvoiceService:
     def get_total(self, items: list) -> float:
         subtotal = sum(i["price"] * i["qty"] for i in items)
         return subtotal * 1.20   # 20% VAT hardcoded
@@ -82,8 +81,7 @@ If the VAT rate changes to 22%, it must be changed in both places. If a develope
 
 ### Conforming — single authoritative source
 
-```python
-VAT_RATE = 1.20   # single authoritative source
+````nVAT_RATE = 1.20   # single authoritative source
 
 def calculate_total(items: list) -> float:
     subtotal = sum(i["price"] * i["qty"] for i in items)
@@ -102,8 +100,7 @@ The VAT rate and total calculation live in exactly one place. A single edit prop
 
 ### Violation — duplicated validation logic
 
-```python
-# In the API controller
+````n# In the API controller
 def create_user(data):
     if "@" not in data["email"] or "." not in data["email"]:
         raise ValueError("Invalid email")
@@ -118,8 +115,7 @@ def register_user(email, password):
 
 ### Conforming
 
-```python
-def is_valid_email(email: str) -> bool:
+````ndef is_valid_email(email: str) -> bool:
     return "@" in email and "." in email
 
 # Both call the single shared function

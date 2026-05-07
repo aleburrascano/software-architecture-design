@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -71,8 +71,7 @@ Flow: Subject state changes → `notify()` → `observer.update()` for each regi
 
 ## Code Example
 
-```java
-import java.util.*;
+````nimport java.util.*;
 
 interface Observer {
     void update(String weather);
@@ -133,8 +132,8 @@ station.setWeather("Sunny");
 - **GUI event listeners** — a button (subject) broadcasts click events to all registered action listeners; no button code changes when a new listener is added.
 - **Weather apps** — a central weather data service pushes updates to phone displays, web dashboards, and IoT devices simultaneously.
 - **Spreadsheets** — changing a cell value triggers recalculation in all dependent cells and chart views (Excel's cell dependency graph is a form of Observer).
-- **`java.util.Observable` / `PropertyChangeListener`** — Java's built-in observer utilities used heavily in Swing and JavaBeans.
-- **Django signals** (`post_save`, `pre_delete`) — models broadcast lifecycle events to any registered signal handler.
+- **Built-in observer utilities** — most runtimes and frameworks provide built-in event/listener APIs that implement the Observer pattern natively.
+- **ORM lifecycle hooks** — data access frameworks broadcast model lifecycle events (before/after save, delete) to registered signal handlers.
 
 ## Related
 

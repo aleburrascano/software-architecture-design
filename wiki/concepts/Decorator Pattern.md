@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03T00:00:00.000Z'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - Structural Design Patterns.md
   - https://refactoring.guru/design-patterns/decorator
@@ -85,8 +85,7 @@ A wrapper is an object linked to a target object. The wrapper contains the same 
 
 ## Code Example
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Component interface
 class Coffee(ABC):
@@ -145,8 +144,7 @@ print(f"${order.get_cost():.2f}")  # $2.50
 
 Data source example (from prior Code Sketch — preserved for completeness):
 
-```python
-# Stacking encryption + compression decorators over a file data source
+````n# Stacking encryption + compression decorators over a file data source
 source = CompressionDecorator(EncryptionDecorator(FileDataSource("data.txt")))
 source.write("hello world")
 print(source.read())   # "hello world"

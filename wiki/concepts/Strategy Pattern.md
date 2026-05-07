@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -70,8 +70,7 @@ The Context delegates the algorithm to the Strategy; the Client decides which st
 
 ## Code Example
 
-```java
-// Strategy Interface
+````n// Strategy Interface
 public interface SortingStrategy {
     void sort(int[] array);
 }

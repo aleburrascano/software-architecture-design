@@ -2,7 +2,7 @@
 type: source
 created: 2026-05-03
 updated: 2026-05-03
-source_path: raw/Software architecture 1.md
+source_path: raw/articles/Software architecture 1.md
 source_date: 2002-04-09
 source_author: Wikipedia contributors
 tags:

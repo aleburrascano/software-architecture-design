@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/system-design/interface-segregation-principle/"
   - "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"
 tags:
@@ -55,8 +55,7 @@ A restaurant menu: a vegetarian customer who receives a complete menu (vegetaria
 
 ### Violation — fat Worker interface
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class Worker(ABC):
     @abstractmethod
@@ -84,8 +83,7 @@ class RobotWorker(Worker):
 
 ### Conforming — segregated role interfaces
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 class Workable(ABC):
     @abstractmethod
@@ -116,8 +114,7 @@ Clients that only care about `Workable` depend on only that interface, regardles
 
 A common application of ISP in repository patterns: not all consumers need both read and write access.
 
-```java
-// Fat interface — violation
+````n// Fat interface — violation
 interface UserRepository {
     User findById(int id);
     List<User> findAll();

@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -69,8 +69,7 @@ Three step categories exist:
 
 ## Code Example
 
-```java
-abstract class BeverageMaker {
+````nabstract class BeverageMaker {
     // Template Method — final prevents subclasses from reordering steps
     public final void makeBeverage() {
         boilWater();

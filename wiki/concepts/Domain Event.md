@@ -1,7 +1,7 @@
----
+﻿---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/domain-driven-design/domain-events/'
 tags:
@@ -16,7 +16,7 @@ A record of something significant that happened in the business domain, expresse
 
 ## Problem
 
-After a business operation completes, other parts of the system often need to react — sending an email confirmation, updating a read model, notifying another service. Encoding these reactions directly into domain logic creates tight coupling and violates the Single Responsibility Principle. How do you let the rest of the system know that something happened without the domain layer knowing about infrastructure or other domains?
+After a business operation completes, other parts of the system often need to react â€” sending an email confirmation, updating a read model, notifying another service. Encoding these reactions directly into domain logic creates tight coupling and violates the Single Responsibility Principle. How do you let the rest of the system know that something happened without the domain layer knowing about infrastructure or other domains?
 
 ## Solution / Explanation
 
@@ -28,7 +28,7 @@ A **Domain Event** is an immutable record that something noteworthy happened: `O
 |---|---|---|
 | Scope | Internal to a single Bounded Context | Crosses Bounded Context or service boundaries |
 | Coupling | Tightly coupled to the domain model | Published as a schema contract |
-| Transport | In-process (e.g., MediatR) | Message broker (e.g., RabbitMQ, Kafka) |
+| Transport | In-process (e.g., mediator library or event dispatcher) | Message broker (e.g., a distributed queue or pub/sub system) |
 | Failure model | Handled in same transaction | Requires [[Outbox Pattern]] for reliability |
 
 A Domain Event may be **translated** into an Integration Event before being published externally.
@@ -40,21 +40,21 @@ A Domain Event may be **translated** into an Integration Event before being publ
 2. After the transaction commits successfully, the application service dispatches the collected events to handlers.
 3. Avoids publishing events for transactions that ultimately rolled back.
 
-**Avoid:** Raising events before the transaction commits — handlers may execute for a state that was never durably written.
+**Avoid:** Raising events before the transaction commits â€” handlers may execute for a state that was never durably written.
 
 ### Key Design Principles
 
 - Events are **named in past tense** (`OrderShipped`, not `ShipOrder`).
-- Events should be **immutable** — they represent facts that cannot be changed.
-- Avoid leaking internal Value Objects or aggregate internals through events — this creates coupling.
+- Events should be **immutable** â€” they represent facts that cannot be changed.
+- Avoid leaking internal Value Objects or aggregate internals through events â€” this creates coupling.
 - Events carry enough data for handlers to act without re-querying the originating aggregate (but avoid embedding the entire aggregate state).
 
 ## Key Components
 
-- **Event name** — descriptive past-tense identifier from the ubiquitous language.
-- **Timestamp** — when the event occurred.
-- **Aggregate identity** — identifies the source aggregate.
-- **Relevant data** — fields needed by downstream handlers.
+- **Event name** â€” descriptive past-tense identifier from the ubiquitous language.
+- **Timestamp** â€” when the event occurred.
+- **Aggregate identity** â€” identifies the source aggregate.
+- **Relevant data** â€” fields needed by downstream handlers.
 
 ## When to Use
 
@@ -74,9 +74,9 @@ A Domain Event may be **translated** into an Integration Event before being publ
 
 ## Related
 
-- [[Domain-Driven Design]] — the framework this concept belongs to
-- [[Aggregate]] — aggregates raise domain events
-- [[Event Sourcing]] — stores the stream of domain events as the source of truth
-- [[Event-Driven Architecture]] — architectural style built on events
-- [[Outbox Pattern]] — for reliable publishing of domain events as integration events
-- [[Event Storming]] — workshop technique that starts by discovering domain events
+- [[Domain-Driven Design]] â€” the framework this concept belongs to
+- [[Aggregate]] â€” aggregates raise domain events
+- [[Event Sourcing]] â€” stores the stream of domain events as the source of truth
+- [[Event-Driven Architecture]] â€” architectural style built on events
+- [[Outbox Pattern]] â€” for reliable publishing of domain events as integration events
+- [[Event Storming]] â€” workshop technique that starts by discovering domain events

@@ -1,11 +1,11 @@
----
+﻿---
 type: topic
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
-  - "raw/Software design.md"
-  - "raw/Software architecture 1.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/Software design.md"
+  - "raw/articles/Software architecture 1.md"
 tags:
   - design-principle
   - topic

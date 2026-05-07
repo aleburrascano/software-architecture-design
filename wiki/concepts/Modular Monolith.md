@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/modular-monolith/'
 tags:
@@ -79,6 +79,25 @@ Not suitable when:
 | Easier local development and debugging | Single deployment unit — one bad deploy affects all |
 | Clear path to microservices extraction | Shared database can still create coupling if not carefully designed |
 
+## DDD Integration (kgrzybek Pattern)
+
+Kamil Grzybek's reference implementation (`kgrzybek/modular-monolith-with-ddd`) demonstrates the canonical approach:
+
+- Each **module** maps to a **Bounded Context** — it owns its own persistence schema, domain model, and application layer API.
+- **Intra-module communication** happens through the domain event bus (in-process); modules do not call each other's internal classes directly.
+- **Module contracts** are explicit public interfaces; no module exposes its internal repositories, entities, or DB tables to sibling modules.
+- **Shared kernel** is minimized — only essential cross-cutting types (user identity, tenant ID) are shared; business logic is not.
+
+### Migration Path to Microservices
+
+The Modular Monolith is a valuable intermediate step:
+1. Build the system as a Modular Monolith with strict boundary enforcement.
+2. Identify which modules need independent scaling or team autonomy.
+3. Extract those modules as microservices using the [[Strangler Fig Pattern]].
+4. Keep remaining modules in the monolith until there is a genuine operational reason to extract.
+
+This avoids the "microservices-first" mistake of paying distributed system costs before domain boundaries are well understood.
+
 ## Related
 
 - [[Microservices Architecture]] — the distributed alternative; extract modules when genuinely needed
@@ -86,3 +105,4 @@ Not suitable when:
 - [[Layered Architecture]] — replaced by feature-oriented module organization
 - [[Vertical Slice Architecture]] — a complementary feature-organizing principle within modules
 - [[Strangler Fig Pattern]] — used to extract modules into microservices when the time comes
+- [[Domain-Driven Design]] — provides the bounded context model that drives module boundary design

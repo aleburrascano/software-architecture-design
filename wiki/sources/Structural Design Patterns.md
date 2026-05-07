@@ -1,8 +1,8 @@
----
+﻿---
 type: source
 created: '2026-05-03T00:00:00.000Z'
 updated: '2026-05-03T00:00:00.000Z'
-source_path: raw/Structural Design Patterns.md
+source_path: raw/articles/Structural Design Patterns.md
 source_date: null
 source_author: null
 tags:
@@ -14,7 +14,7 @@ tags:
 # Source: Structural Design Patterns
 
 **Origin:** [https://refactoring.guru/design-patterns/structural-patterns](https://refactoring.guru/design-patterns/structural-patterns)
-**Raw file:** `raw/Structural Design Patterns.md`
+**Raw file:** `raw/articles/Structural Design Patterns.md`
 
 ## Summary
 

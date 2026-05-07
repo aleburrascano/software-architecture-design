@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - >-
     https://awesome-architecture.com/microservices/observability/distributed-tracing/
@@ -60,14 +60,14 @@ Trace: a3b2c1d4
 
 ### OpenTelemetry
 
-The de-facto standard for distributed tracing instrumentation. Provides:
+The de-facto standard for distributed tracing instrumentation, formed by merging **OpenTracing** and **OpenCensus** into a single CNCF project. Provides:
 - **API** — vendor-neutral interfaces for creating spans.
 - **SDK** — implementation with samplers, exporters, processors.
 - **OTLP** — wire protocol for exporting telemetry to backends.
 - **Instrumentation libraries** — automatic tracing for popular frameworks (HTTP, gRPC, DB drivers).
 - **Collector** — a standalone agent/gateway for receiving, processing, and exporting telemetry.
 
-Common backends: **Jaeger**, **Zipkin**, **Grafana Tempo**, **.NET Aspire Dashboard**.
+Common backends: **Jaeger** (CNCF-graduated, OpenTracing-compatible), **Zipkin**, **Grafana Tempo**, **AWS X-Ray**, **.NET Aspire Dashboard**.
 
 ## When to Use
 
@@ -90,3 +90,4 @@ Common backends: **Jaeger**, **Zipkin**, **Grafana Tempo**, **.NET Aspire Dashbo
 - [[Microservices Architecture]] — the primary context where distributed tracing is essential
 - [[Service Mesh]] — service mesh proxies emit trace spans automatically
 - [[Sidecar Pattern]] — OpenTelemetry Collector deployed as a sidecar
+- [[Observability Implementation Guide]] — implementation roadmap covering OpenTelemetry stack setup and tool selection

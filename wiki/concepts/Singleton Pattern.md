@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -76,8 +76,7 @@ Do **not** reach for Singleton merely because a class feels "global" — this of
 
 **Eager initialisation (Static field):** Create the instance at class-load time, not on first call. Thread-safe by definition in languages with class-loading guarantees (e.g. Java static field initialiser), but incurs the creation cost even if the instance is never used.
 
-```java
-class Singleton {
+````nclass Singleton {
     private static Singleton obj = new Singleton();
     private Singleton() {}
     public static Singleton getInstance() { return obj; }
@@ -86,8 +85,7 @@ class Singleton {
 
 **Thread-safe synchronized method:** Synchronize `getInstance()` so only one thread enters at a time. Simple, but every call acquires the lock — high contention overhead after the instance exists.
 
-```java
-public static synchronized Singleton getInstance() {
+````npublic static synchronized Singleton getInstance() {
     if (obj == null)
         obj = new Singleton();
     return obj;
@@ -96,8 +94,7 @@ public static synchronized Singleton getInstance() {
 
 **Double-checked locking (DCL):** Check `_instance == null` without a lock, enter a `synchronized` block, check again, then create. Avoids the lock overhead on every call after creation. Requires `volatile` in Java to prevent instruction reordering.
 
-```java
-class Singleton {
+````nclass Singleton {
     private static volatile Singleton obj = null;
     public static Singleton getInstance() {
         if (obj == null) {
@@ -113,8 +110,7 @@ class Singleton {
 
 **Initialization-on-demand holder (Java — preferred):** A private static inner class holds the instance. The JVM guarantees its static initialiser runs exactly once when first accessed, providing lazy initialisation without explicit synchronisation.
 
-```java
-public class Singleton {
+````npublic class Singleton {
     private Singleton() {}
     private static class SingletonInner {
         private static final Singleton INSTANCE = new Singleton();
@@ -127,8 +123,7 @@ public class Singleton {
 
 **Enum Singleton (Java — safest):** Declare a single-element `enum`. The JVM serialisation mechanism and reflection cannot break it. Considered the most robust Java implementation (Effective Java, Bloch). Handles serialisation and reflection attacks automatically.
 
-```java
-public enum Singleton {
+````npublic enum Singleton {
     INSTANCE;
     public void doSomething() {
         System.out.println("Doing something...");
@@ -142,8 +137,7 @@ public enum Singleton {
 
 Python — basic lazy Singleton using `__new__`:
 
-```python
-class Singleton:
+````nclass Singleton:
     _instance = None
 
     def __new__(cls):
@@ -154,8 +148,7 @@ class Singleton:
 
 Python — thread-safe double-checked locking:
 
-```python
-import threading
+````nimport threading
 
 class ThreadSafeSingleton:
     _instance = None

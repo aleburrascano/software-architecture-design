@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
-  - "raw/Software design.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/Software design.md"
   - "https://www.geeksforgeeks.org/software-engineering/kiss-principle-in-software-development/"
 tags:
   - design-principle
@@ -81,8 +81,7 @@ These are product examples, but the same principle applies to API design, module
 
 ### Violation — over-engineered solution for a trivial problem
 
-```python
-class EmailValidatorFactory:
+````nclass EmailValidatorFactory:
     @staticmethod
     def create(strategy: str = "default") -> "IEmailValidator":
         if strategy == "default":
@@ -100,8 +99,7 @@ For most use-cases, the factory and the interface are unnecessary complexity. Th
 
 ### KISS-conforming
 
-```python
-def is_valid_email(email: str) -> bool:
+````ndef is_valid_email(email: str) -> bool:
     return "@" in email and "." in email.split("@")[-1]
 ```
 
@@ -109,15 +107,13 @@ If validation rules genuinely become complex or pluggable, the abstraction can b
 
 ### Violation — clever one-liner that sacrifices readability
 
-```python
-# "clever" but opaque
+````n# "clever" but opaque
 result = (lambda f: f(f))(lambda f: lambda n: 1 if n <= 1 else n * f(f)(n - 1))(10)
 ```
 
 ### KISS-conforming
 
-```python
-def factorial(n: int) -> int:
+````ndef factorial(n: int) -> int:
     if n <= 1:
         return 1
     return n * factorial(n - 1)
@@ -127,8 +123,7 @@ result = factorial(10)
 
 ### Violation — needlessly deep class hierarchy
 
-```python
-class BaseHandler:
+````nclass BaseHandler:
     def handle(self, request): ...
 
 class AbstractMiddleHandler(BaseHandler):
@@ -142,8 +137,7 @@ class ConcreteHandler(AbstractMiddleHandler):
 
 ### KISS-conforming
 
-```python
-def handle_request(request):
+````ndef handle_request(request):
     validate(request)
     process(request)
 ```

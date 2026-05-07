@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
-  - "raw/Software design.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/Software design.md"
   - "https://www.geeksforgeeks.org/system-design/single-responsibility-in-solid-design-principle/"
   - "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html"
   - "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"
@@ -42,8 +42,7 @@ Uncle Bob's most important clarification: a "reason to change" is not a technica
 
 The canonical example is an `Employee` class with three methods:
 
-```java
-public class Employee {
+````npublic class Employee {
     public Money calculatePay();   // CFO's domain — financial calculations
     public void save();            // CTO's domain — database operations
     public String reportHours();   // COO's domain — operational auditing
@@ -73,8 +72,7 @@ A bakery: a baker who focuses exclusively on baking maintains clear responsibili
 
 ### Violation
 
-```python
-class UserService:
+````nclass UserService:
     def get_user(self, user_id: int) -> dict:
         # business logic
         ...
@@ -93,8 +91,7 @@ class UserService:
 
 ### Conforming
 
-```python
-class UserRepository:
+````nclass UserRepository:
     def save(self, user: dict) -> None:
         conn = connect("postgres://...")
         conn.execute("INSERT INTO users ...")
@@ -117,8 +114,7 @@ Each class now has exactly one reason to change. `UserRepository` changes only w
 
 ### Java example — Invoice class
 
-```java
-// Violation: one class, three responsibilities
+````n// Violation: one class, three responsibilities
 public class Invoice {
     public void addInvoice() { /* data manipulation */ }
     public void deleteInvoice() { /* data manipulation */ }

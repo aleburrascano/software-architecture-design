@@ -1,12 +1,12 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - "raw/What is Software Architecture A Comprehensive Guide.md"
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Software architecture 1.md"
+  - "raw/articles/What is Software Architecture A Comprehensive Guide.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Software architecture 1.md"
   - "https://www.geeksforgeeks.org/system-design/event-driven-architecture-system-design/"
 tags:
   - architecture
@@ -96,6 +96,19 @@ Decouple producers from consumers via an **event broker** (e.g., Apache Kafka, R
 | Observability | Harder (distributed trace required) | Easier |
 | Latency | Variable (eventual) | Predictable |
 
+## EDA Patterns Taxonomy
+
+EDA encompasses several distinct patterns that differ in what an event carries and how consumers react:
+
+| Pattern | Event Payload | Consumer Behavior |
+|---------|--------------|-------------------|
+| **[[Event Notification Pattern]]** | Thin signal — "something happened" | Consumer calls back for details if needed |
+| **[[Event-Carried State Transfer]]** | Full state in payload | Consumer caches local copy; no callback needed |
+| **[[Event Sourcing]]** | All state changes as immutable log | Consumer replays log to reconstruct state |
+| **[[Choreography vs Orchestration]]** | Topology choice | Services react to events (choreography) or follow commands (orchestration) |
+
+Choosing the right pattern is the first EDA design decision: notification creates less data coupling but may cause thundering-herd callbacks; ECST enables full temporal decoupling but increases payload size and drift risk.
+
 ## Related
 
 - [[CQRS]] — often combined with EDA; the command side publishes events that update the read model
@@ -103,3 +116,4 @@ Decouple producers from consumers via an **event broker** (e.g., Apache Kafka, R
 - [[Microservices Architecture]] — EDA further decouples services in a microservices deployment
 - [[Domain-Driven Design]] — domain events are the natural currency in EDA
 - [[Service-Oriented Architecture]] — async messaging can replace ESB orchestration in modern SOA variants
+- [[Dapr]] — CNCF sidecar runtime providing plug-and-play pub/sub, state, and workflow building blocks for EDA

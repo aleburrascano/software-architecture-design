@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
   - 'https://martinfowler.com/bliki/CircuitBreaker.html'
   - 'https://awesome-architecture.com/cloud-design-patterns/circuit-breaker/'
@@ -71,12 +71,20 @@ After a configurable reset timeout the breaker moves to half-open and allows a s
 - Sophisticated implementations distinguish error types: connection failures vs. timeouts vs. application errors may warrant different thresholds.
 - State change events (breaker opens/closes) should trigger monitoring alerts — they signal systemic degradation.
 
-## Real-World Usage
+## Netflix Hystrix
 
-- Netflix Hystrix popularized the Circuit Breaker for microservices. **Resilience4j** (Java) and **Polly** (.NET) are modern successors.
-- AWS SDK clients embed configurable circuit breaker policies.
-- Netflix, Amazon, and Uber all employ it to prevent cascading failures in their microservices deployments.
-- Combine with **Bulkhead** (isolate resource pools) and **Timeout** patterns for comprehensive resilience.
+Hystrix was the reference implementation that popularized the Circuit Breaker for microservices. Key design choices:
+
+- **Thread pool isolation per dependency** — each downstream service gets its own thread pool; a slow dependency cannot exhaust the calling service's shared thread pool (Bulkhead + Circuit Breaker combined).
+- **Command pattern wrapping** — each call is wrapped in a `HystrixCommand` object, enabling consistent fallback, timeout, metrics, and caching behavior.
+- **Hystrix Dashboard** — real-time visualization of circuit state (Closed/Open/Half-Open), request volume, error percentage, and latency percentiles across all dependencies.
+- **Metrics stream** — a Server-Sent Events endpoint exposing per-command metrics; consumed by Turbine for aggregated fleet-wide views.
+
+Hystrix is no longer actively maintained (in maintenance mode since 2018). **Resilience4j** (Java) and **Polly** (.NET) are the modern successors. AWS SDK clients embed configurable circuit breaker policies.
+
+Netflix, Amazon, and Uber all employ the pattern to prevent cascading failures in their microservices deployments.
+
+Combine with **Bulkhead** (isolate resource pools) and **Timeout** patterns for comprehensive resilience.
 
 ## Related
 

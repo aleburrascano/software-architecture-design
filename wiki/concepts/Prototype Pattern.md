@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -98,8 +98,7 @@ Many languages provide a built-in shallow copy mechanism (Python's `copy.copy`, 
 
 Python — shape cloning with prototype registry:
 
-```python
-import copy
+````nimport copy
 from abc import ABC, abstractmethod
 
 class Shape(ABC):
@@ -154,8 +153,7 @@ c1.draw()                            # Drawing a orange circle with radius 5.0.
 
 Java — explicit clone implementation:
 
-```java
-public interface Shape {
+````npublic interface Shape {
     Shape clone();
     void draw();
 }

@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -71,8 +71,7 @@ The Context and State objects may reference each other: states need to trigger t
 
 ## Code Example
 
-```java
-interface VendingMachineState {
+````ninterface VendingMachineState {
     void insertCoin(VendingMachine machine);
     void selectProduct(VendingMachine machine);
     void dispense(VendingMachine machine);

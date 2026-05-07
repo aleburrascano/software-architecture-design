@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - "raw/What Makes a Good Software Design Mindset.md"
+  - "raw/articles/What Makes a Good Software Design Mindset.md"
   - "https://www.geeksforgeeks.org/java/difference-between-inheritance-and-composition-in-java/"
 tags:
   - design-principle
@@ -79,8 +79,7 @@ Game engines (Unity, Unreal) are the most visible real-world embodiment of compo
 
 ### Inheritance approach — fragile (Python)
 
-```python
-class Bird:
+````nclass Bird:
     def move(self): self.fly()
     def fly(self): print("flap wings")
 
@@ -96,8 +95,7 @@ The inheritance hierarchy must be redesigned every time a new bird type is added
 
 ### Composition approach — flexible (Python)
 
-```python
-from typing import Protocol
+````nfrom typing import Protocol
 
 class LocomotionBehavior(Protocol):
     def move(self): ...
@@ -132,8 +130,7 @@ Each behavior is a separate, testable object. The `Bird` class is unmodified whe
 
 The canonical Java example: a `Library` *has* `Book` objects rather than inheriting from them. The `Library` holds a collection and delegates book-related queries to the `Book` instances:
 
-```java
-class Book {
+````nclass Book {
     public String title;
     public String author;
     Book(String t, String a) { this.title = t; this.author = a; }

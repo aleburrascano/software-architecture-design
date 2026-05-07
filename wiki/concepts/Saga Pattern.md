@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
   - 'https://microservices.io/patterns/data/saga.html'
   - 'https://awesome-architecture.com/cloud-design-patterns/saga/'
@@ -96,7 +96,26 @@ Each step that can be undone must have a corresponding compensating action (e.g.
 
 - **E-commerce order placement:** Reserve inventory → charge payment → schedule delivery. If payment fails, compensate by releasing the inventory reservation.
 - **Travel booking:** Book flight + hotel + car rental; if car rental fails, cancel flight and hotel via compensating transactions.
-- Frameworks: Axon Framework (Java), Eventuate (Java/Node.js), MassTransit (C#), Temporal.io.
+- Saga orchestration frameworks exist across ecosystems — consult the sources section for specific library examples.
+
+## Implementation Patterns
+
+### Orchestration Saga vs. Choreography Saga
+
+The saga's control flow topology is a separate design decision from whether to use a saga at all:
+
+- **Orchestration Saga** uses a dedicated saga manager / process manager object. It sends commands, awaits replies, and drives the step sequence explicitly. Easier to observe, test in isolation, and reason about complex flows. Risk: the orchestrator is a coupling point.
+- **Choreography Saga** has no coordinator — each service reacts to domain events and publishes its own events. Better decoupling and autonomy. Risk: the overall flow is emergent and harder to trace; cyclic event dependencies can arise.
+
+See [[Choreography vs Orchestration]] for the full trade-off analysis. For complex workflows with many steps and rollback conditions, orchestration is generally preferred; for short two- or three-step flows between autonomous services, choreography is simpler.
+
+### Compensation Transaction Pattern (Python-CQRS)
+
+In Python-CQRS-style implementations, each saga step is a pair:
+- **Forward command** — the step's normal action (e.g., `ReserveInventoryCommand`)
+- **Compensating command** — the rollback action (e.g., `ReleaseInventoryCommand`), registered at step definition time
+
+The saga engine executes forward commands in sequence; on failure at step N, it executes compensating commands for steps N−1 down to 1 in reverse order. Compensating commands must be **idempotent** — they may be retried if delivery is uncertain.
 
 ## Related
 
@@ -107,3 +126,4 @@ Each step that can be undone must have a corresponding compensating action (e.g.
 - [[Idempotency]] — saga steps must be safe to retry
 - [[Eventual Consistency]] — sagas trade isolation for availability
 - [[Microservices Architecture]] — the context where sagas are most commonly needed
+- [[Choreography vs Orchestration]] — topology choice for implementing the saga coordination mechanism

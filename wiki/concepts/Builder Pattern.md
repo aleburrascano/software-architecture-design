@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -97,8 +97,7 @@ The Director is optional. When the construction sequence is simple or the client
 
 Python — computer builder with Director:
 
-```python
-# Product
+````n# Product
 class Computer:
     def __init__(self):
         self.cpu = None
@@ -149,8 +148,7 @@ pc.display_info()  # CPU: Gaming CPU i9, RAM: 32GB DDR5, Storage: 2TB NVMe SSD
 
 Fluent Builder (Python pizza example):
 
-```python
-class Pizza:
+````nclass Pizza:
     def __init__(self, size, crust, toppings):
         self.size = size
         self.crust = crust
@@ -185,13 +183,11 @@ pizza = (PizzaBuilder("large")
 
 ## Real-World Examples
 
-- **Java `StringBuilder`** — the canonical Fluent Builder for constructing strings step by step.
-- **Java `HttpRequest.Builder`** (java.net.http) — builds HTTP requests with optional headers, body, timeout.
-- **Lombok `@Builder`** — auto-generates a Fluent Builder for any Java class.
-- **SQL query builders** in ORMs — Hibernate Criteria API, SQLAlchemy `select()`, Laravel Eloquent query builder all use the Builder pattern to compose queries step by step.
-- **Python `urllib.request`** and `requests.Request` — builder-style request construction.
-- **Document generators** (PDF/HTML builders) — Apache PDFBox, iText use builder-style APIs to assemble documents.
-- **UI component builders** — dialog and form builders in GUI frameworks accumulate widget configuration before rendering.
+- **String builders** — standard libraries across languages expose a mutable string-building object that accumulates parts step by step before producing the final immutable string.
+- **HTTP request builders** — HTTP client libraries expose a builder API for constructing requests with optional headers, query parameters, body, and timeout before sending.
+- **ORM query builders** — data access frameworks expose a fluent builder API to compose queries step by step, adding filters, joins, and ordering before execution.
+- **Document generators** — PDF/HTML generation libraries use builder-style APIs to assemble documents from sections, headers, and pages.
+- **UI component builders** — GUI frameworks accumulate widget configuration (size, color, event handlers) before rendering the final component.
 
 ## Related
 

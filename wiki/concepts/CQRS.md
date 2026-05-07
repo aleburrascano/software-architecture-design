@@ -1,10 +1,10 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
   - "https://www.geeksforgeeks.org/system-design/cqrs-command-query-responsibility-segregation/"
   - "https://martinfowler.com/bliki/CQRS.html"
 tags:
@@ -78,7 +78,7 @@ The two sides synchronize asynchronously: the command side emits domain events; 
 - **E-commerce:** The command side processes `AddToCart` and `PlaceOrder` with full business-rule enforcement; the query side serves product listings and order history from a denormalized read store using MongoDB or Elasticsearch.
 - **Banking:** Balance inquiries are served from a pre-computed read model; transactions go through a write pipeline with full validation and relational consistency.
 - Commonly implemented alongside event brokers (Kafka, RabbitMQ) and pairing with [[Event Sourcing]] for full auditability.
-- Widely used in enterprise Java (Axon Framework), .NET (MediatR + EF), and TypeScript/Node.js (NestJS CQRS) ecosystems.
+- Widely supported by frameworks across the JVM, .NET, and Node.js ecosystems — consult the sources section for specific libraries.
 
 ## Comparison: CQRS vs. Event Sourcing
 
@@ -90,9 +90,32 @@ CQRS and Event Sourcing are distinct and independent — but they are frequently
 | Can be used alone? | Yes | Yes |
 | Together | CQRS provides the query side that reads ES projections | ES provides the write side events that CQRS projections consume |
 
+## When NOT to Use CQRS
+
+Fowler's caution is worth repeating: CQRS is not a general-purpose pattern. Avoid it when:
+- The domain is simple CRUD with no read/write asymmetry.
+- The team is small and the overhead of two models exceeds the benefit.
+- There is no significant difference in read and write scaling requirements.
+- Eventual consistency between models is unacceptable to users (e.g., a user expects to immediately see their own write).
+
+A **Reporting Database** (a read-optimized replica of the write DB) solves most query-shaping problems without the full CQRS complexity. Use full CQRS only when the domain genuinely requires separate models with different evolution paths.
+
+## Infrastructure Concerns
+
+**Dead Letter Queue (DLQ):** When a projection handler fails (e.g., deserialization error, downstream service unavailable), the event must not be silently dropped. Route it to a DLQ for later inspection, replay, or manual intervention.
+
+**Schema Registry:** In CQRS+ES systems where events flow over a message broker, a schema registry (Confluent Schema Registry, AWS Glue) enforces event schema compatibility and enables consumers to decode events independently — see [[Event Upcasting]] for handling schema evolution.
+
+## Framework References
+
+This pattern is implemented by frameworks across multiple languages and ecosystems. Consult the sources section for specific library examples.
+
 ## Related
 
 - [[Event Sourcing]] — CQRS's write side is often an event store; ES and CQRS are frequently co-deployed
+- [[Event Sourcing and CQRS Integration]] — deep-dive on the combined pattern
 - [[Event-Driven Architecture]] — CQRS events flow through an event bus to update projections
 - [[Domain-Driven Design]] — CQRS aligns well with DDD's aggregates and domain events; Fowler recommends CQRS mainly for DDD-style complex domains
 - [[Repository Pattern]] — query handlers often use a repository abstraction to access the read model
+- [[Event Upcasting]] — handling schema evolution for events consumed by CQRS projections
+- [[Choreography vs Orchestration]] — projections can be updated via choreography (event-reactive) or orchestration

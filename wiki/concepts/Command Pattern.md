@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -72,8 +72,7 @@ Turn each request into a **Command** object with an `execute()` method (and opti
 
 ## Code Example
 
-```java
-// Command Interface
+````n// Command Interface
 interface Command {
     void execute();
     void undo();

@@ -1,4 +1,4 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
@@ -94,8 +94,7 @@ The Client is decoupled from both the factory implementation and the product imp
 
 Python — regional car manufacturing:
 
-```python
-from abc import ABC, abstractmethod
+````nfrom abc import ABC, abstractmethod
 
 # Abstract Products
 class Car(ABC):

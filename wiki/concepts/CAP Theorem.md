@@ -1,7 +1,7 @@
 ---
 type: concept
 created: '2026-05-03'
-updated: '2026-05-03'
+updated: '2026-05-06'
 sources:
   - 'https://awesome-architecture.com/architectural-design-principles/cap/'
 tags:
@@ -71,10 +71,38 @@ Use CAP to:
 | System may become unavailable during partitions | System stays up during partitions |
 | Suitable for financial transactions, inventory | Suitable for user sessions, caches, DNS |
 
+## Beyond CAP: PACELC
+
+CAP only describes behavior during a **partition**. In practice, network partitions are rare; systems spend most time in normal operation. **PACELC** extends the model:
+
+> "If there is a **P**artition, choose between **A**vailability and **C**onsistency; **E**lse (normal operation), choose between **L**atency and **C**onsistency."
+
+| System | Partition | Normal Ops |
+|--------|-----------|------------|
+| Cassandra | PA (favors availability) | EL (low latency, stale reads) |
+| DynamoDB | PA | EL (configurable) |
+| etcd / Zookeeper | PC (refuses writes) | EC (consistent reads at latency cost) |
+
+For most systems the EL vs EC trade-off during normal operation is more relevant to perceived performance than the rare partition scenario. See [[PACELC Theorem]] for the full framework.
+
+## CP Deep-Dive: etcd and Raft
+
+**etcd** is the canonical CP distributed key-value store, backing Kubernetes cluster state. Its CP guarantee is implemented via **Raft** consensus:
+
+- All writes go to the elected leader.
+- The leader replicates to a quorum (majority) of followers before acknowledging.
+- During a partition, any partition lacking a quorum cannot elect a leader and **blocks writes** until quorum is restored — choosing C over A.
+- Reads can optionally be served from followers (linearizable reads add a round-trip to the leader).
+
+See [[etcd]] and [[Raft Consensus Algorithm]] for implementation details.
+
 ## Related
 
 - [[Eventual Consistency]] — the consistency model embraced by AP systems
+- [[PACELC Theorem]] — extends CAP to cover the latency-consistency trade-off during normal operation
 - [[Saga Pattern]] — avoids distributed transactions; accepts eventual consistency
 - [[Distributed Transactions]] — the strong-consistency alternative to sagas
 - [[Microservices Architecture]] — each service's database choice involves CAP trade-offs
 - [[BASE vs ACID]] — complementary model to CAP for database guarantees
+- [[etcd]] — CP key-value store; Raft-based quorum writes
+- [[Raft Consensus Algorithm]] — the consensus mechanism enabling CP systems like etcd and CockroachDB

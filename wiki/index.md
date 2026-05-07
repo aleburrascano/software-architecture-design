@@ -1,0 +1,267 @@
+---
+type: index
+updated: '2026-05-06'
+---
+# Wiki Index
+
+One-line summary per page. Start queries from `wiki/topics/` (synthesis), drill into `wiki/concepts/` (detail), or check `wiki/sources/` (origin).
+
+---
+
+## Topics (Synthesis & Navigation)
+
+- [[API Design Overview]] — REST, GraphQL, gRPC comparison and decision guide
+- [[Architectural Styles Comparison]] — side-by-side comparison of major architectural styles
+- [[Architectural Styles Reference]] — reference index for all architectural styles
+- [[Behavioral Patterns Overview]] — navigation hub for all GoF behavioral patterns
+- [[Cloud Design Patterns Overview]] — cloud-native resilience and infrastructure patterns
+- [[Consistency Models Overview]] — full consistency spectrum: CAP → PACELC → spectrum → session guarantees → DB decision guide
+- [[Creational Patterns Overview]] — navigation hub for all GoF creational patterns
+- [[DDD Advanced Patterns]] — domain distillation, Responsibility Layers, Knowledge Level, legacy modernization, DDD SLR findings
+- [[DDD Building Blocks]] — tactical DDD patterns: Aggregate, Entity, Value Object, Domain Event, Repository
+- [[Design Patterns Overview]] — master navigation for all 23 GoF patterns
+- [[Design Principles Overview]] — SOLID, DRY, KISS, YAGNI, Law of Demeter
+- [[Learning Path]] — suggested study order for software architecture topics
+- [[Messaging Patterns Overview]] — message brokers, queues, pub/sub, outbox, inbox patterns
+- [[Microservices Patterns Overview]] — service decomposition, data management, and cross-cutting microservices patterns
+- [[Observability Implementation Guide]] — monitoring vs. observability, OpenTelemetry stack, high-cardinality, core analysis loop, 5-phase roadmap
+- [[Reactive Architecture Overview]] — reactive manifesto, reactive streams, backpressure
+- [[Software Architecture Overview]] — what is architecture, key principles, quality attributes
+- [[Software Design Fundamentals]] — design principles, abstractions, modularity
+- [[SOLID Principles]] — single-responsibility through dependency inversion, with examples
+- [[Structural Patterns Overview]] — navigation hub for all GoF structural patterns
+- [[System Design Interview Guide]] — scalability building blocks, trade-off framework, interview methodology
+- [[Testing Strategies Overview]] — test pyramid, TDD, BDD, property-based, consumer-driven contracts
+
+---
+
+## Concepts (A–Z)
+
+- [[Abstract Factory Pattern]] — creational pattern for families of related objects without specifying concrete classes
+- [[Abstraction]] — hiding complexity behind interfaces; a core design principle
+- [[Actor Model Architecture]] — concurrency model using message-passing actors; no shared mutable state
+- [[Adapter Pattern]] — structural pattern converting one interface to another expected by clients
+- [[Aggregate]] — DDD cluster of entities/value objects with a single root enforcing all invariants
+- [[Ambassador Pattern]] — proxy sidecar that offloads cross-cutting network concerns from a service
+- [[Anti-Corruption Layer Pattern]] — translation boundary protecting a domain model from external model pollution
+- [[Apache Kafka]] — distributed event streaming platform; durable, ordered, partitioned log
+- [[API Design Principles]] — versioning, idempotency, pagination, error conventions
+- [[API Gateway Pattern]] — single entry point for client requests; handles routing, auth, rate-limiting
+- [[Architectural Decision Records (ADR)]] — documents capturing significant decisions with context, options, and consequences
+- [[Architectural Styles and Patterns]] — overview of the landscape of architectural styles
+- [[Architecture Erosion]] — how architectural intent degrades over time and how to prevent it
+- [[Backend for Frontend Pattern]] — dedicated API gateway tailored to a specific client type
+- [[Backpressure]] — mechanism for consumers to signal producers to slow down in reactive systems
+- [[BASE vs ACID]] — database consistency property sets: strong (ACID) vs available (BASE) trade-offs
+- [[Behavior-Driven Development]] — test specification in human-readable Given/When/Then format
+- [[Blue-Green Deployment]] — zero-downtime deployment using two identical production environments
+- [[Bounded Context]] — DDD explicit boundary where a specific domain model and ubiquitous language apply
+- [[Bridge Pattern]] — structural pattern decoupling abstraction from implementation so both can vary independently
+- [[Brooks's Law]] — adding manpower to a late software project makes it later; n(n-1)/2 communication overhead
+- [[Builder Pattern]] — creational pattern separating complex object construction from its representation
+- [[Bulkhead Pattern]] — isolates failures by partitioning resources into isolated pools
+- [[Canary Release]] — gradual production rollout to a small subset of users before full deployment
+- [[CAP Theorem]] — distributed stores can guarantee at most 2 of: Consistency, Availability, Partition Tolerance
+- [[Chain of Responsibility Pattern]] — passes request along a handler chain until one handles it
+- [[Choreography vs Orchestration]] — event-reactive flow vs. central coordinator; Saga topology choice
+- [[Circuit Breaker Pattern]] — trips to open state on failure threshold; prevents cascading failures
+- [[Clean Architecture]] — concentric layer architecture enforcing inward dependency rule
+- [[Command Pattern]] — encapsulates a request as an object; enables undo, queue, log
+- [[Composite Pattern]] — structural pattern composing objects into tree structures
+- [[Composition over Inheritance]] — favor object composition over class inheritance for flexibility
+- [[Conceptual Integrity]] — architectural clarity and consistency; Mythical Man Month concept
+- [[Consistency Models]] — full spectrum: Linearizability → Sequential → Causal → FIFO → Eventual; data-centric and client-centric
+- [[Consumer-Driven Contract Testing]] — consumer defines contract; provider verifies against it
+- [[Continuous Integration and Delivery]] — CI/CD pipeline: automated build, test, deploy
+- [[Conway's Law]] — system structure mirrors the communication structure of the organization that built it
+- [[Coupling and Cohesion]] — foundational design quality metrics; high cohesion, low coupling
+- [[CQRS]] — separates read model from write model; each optimized independently
+- [[Dapr]] — CNCF sidecar runtime with 10 distributed building blocks (pub/sub, state, actors, workflow)
+- [[Decorator Pattern]] — structural pattern adding behavior to objects without subclassing
+- [[Dependency Injection]] — providing dependencies from the outside rather than constructing them internally
+- [[Dependency Inversion Principle]] — high-level modules should not depend on low-level modules; both depend on abstractions
+- [[Distributed Tracing]] — tracks requests across services as spans within a trace; OpenTelemetry standard
+- [[Distributed Transactions]] — ACID transactions spanning multiple services; costly but strongly consistent
+- [[Domain Event]] — immutable record of a significant domain occurrence; past tense, carries all relevant data
+- [[Domain-Driven Design]] — software built around deep domain model; ubiquitous language, bounded contexts
+- [[DRY Principle]] — Don't Repeat Yourself; single authoritative source for every piece of knowledge
+- [[Encapsulation]] — hiding internal state; exposing only necessary interfaces
+- [[Enterprise Integration Patterns]] — canonical patterns for messaging-based integration (EIP)
+- [[etcd]] — CNCF Raft-based CP distributed key-value store; Kubernetes cluster state backing store
+- [[Event Notification Pattern]] — thin events as signals; consumers call back for details; minimal payload coupling
+- [[Event Sourcing]] — state derived from append-only event log; enables temporal queries and full audit trail
+- [[Event Sourcing and CQRS Integration]] — ES write-side + CQRS read-side projections; Kafka-based Single Views
+- [[Event Storming]] — collaborative workshop for discovering domain events and bounded contexts
+- [[Event Upcasting]] — transforms old event payloads to current schema on read; handles schema evolution
+- [[Event-Carried State Transfer]] — fat events with full state payload; temporal decoupling; no callback needed
+- [[Event-Driven Architecture]] — components communicate via events through a broker; loose coupling
+- [[Eventual Consistency]] — system converges to consistent state given no new updates; AP systems' model
+- [[Facade Pattern]] — structural pattern providing simplified interface to a complex subsystem
+- [[Factory Method Pattern]] — creational pattern deferring object creation to subclasses
+- [[Feature Flags]] — runtime toggle for enabling/disabling features without deployment
+- [[Flyweight Pattern]] — structural pattern sharing state between many fine-grained objects
+- [[Gossip Protocol]] — epidemic peer-to-peer state dissemination; O(log N) convergence; decentralized
+- [[GraphQL]] — query language for APIs; clients specify exact data shape; single endpoint
+- [[gRPC]] — high-performance RPC framework using Protocol Buffers; strong typing, streaming
+- [[Hexagonal Architecture]] — ports and adapters; isolates domain from infrastructure; full testability
+- [[Idempotency]] — operations that produce the same result regardless of how many times executed
+- [[Inbox Pattern]] — idempotent message reception; deduplicates incoming messages before processing
+- [[Information Hiding]] — modules hide implementation details; only expose necessary interfaces
+- [[Infrastructure as Code]] — managing and provisioning infrastructure through code and version control
+- [[Integration Testing]] — testing interactions between components; beyond unit, before end-to-end
+- [[Interface Segregation Principle]] — clients should not depend on interfaces they don't use
+- [[Iterator Pattern]] — behavioral pattern traversing a collection without exposing its representation
+- [[KISS Principle]] — Keep It Simple, Stupid; prefer simple solutions
+- [[Knowledge Level Pattern]] — base-level instances + meta-level type/rules; configurable behavior without code changes
+- [[Law of Demeter]] — a module should not know about the internals of the objects it manipulates
+- [[Layered Architecture]] — horizontal layers (presentation, business, data); classic n-tier
+- [[Lazy Initialization]] — defer object creation until first use
+- [[Liskov Substitution Principle]] — subtypes must be substitutable for their base types
+- [[Mechanical Sympathy]] — designing software aligned to hardware behavior (cache lines, memory access, false sharing)
+- [[Mediator Pattern]] — behavioral pattern centralizing communication between components
+- [[Memento Pattern]] — behavioral pattern capturing and restoring object state
+- [[Message Broker]] — intermediary routing messages between producers and consumers
+- [[Message Queue]] — asynchronous point-to-point message delivery with buffering
+- [[Microservices Architecture]] — independently deployable services organized around business capabilities
+- [[Modular Monolith]] — single deployable unit with enforced module boundaries; MonolithFirst strategy
+- [[Modularity]] — decomposing a system into loosely coupled, highly cohesive modules
+- [[MVC Pattern]] — separates domain model, presentation, and user input handling
+- [[MVVM Pattern]] — Model-View-ViewModel; data binding between view and view model
+- [[Object Pool Pattern]] — reuses expensive objects rather than creating and destroying them
+- [[Observability]] — infer internal system state from external outputs; three pillars: logs, metrics, traces
+- [[Observer Pattern]] — behavioral pattern; objects subscribe to state changes in a subject
+- [[Onion Architecture]] — concentric layers; domain at center; dependencies point inward
+- [[Open-Closed Principle]] — open for extension, closed for modification
+- [[Outbox Pattern]] — atomically writes DB record + outbox message; ensures reliable event publishing
+- [[PACELC Theorem]] — extends CAP: during partition choose A vs C; else choose Latency vs Consistency
+- [[Property-Based Testing]] — generates random inputs to test properties that should always hold
+- [[Prototype Pattern]] — creational pattern cloning existing objects
+- [[Proxy Pattern]] — structural pattern providing a surrogate or placeholder for another object
+- [[Publish-Subscribe Pattern]] — producers publish to topics; consumers subscribe independently
+- [[Quality Attributes]] — non-functional requirements: performance, scalability, reliability, security, maintainability
+- [[Raft Consensus Algorithm]] — leader election, log replication, safety; more understandable than Paxos
+- [[Reactive Architecture]] — systems that are responsive, resilient, elastic, and message-driven
+- [[Reactive Programming]] — programming with asynchronous data streams and propagation of change
+- [[Reactive Streams]] — specification for async stream processing with non-blocking backpressure
+- [[Repository Pattern]] — abstraction for persisting and retrieving aggregates; decouples domain from storage
+- [[Resiliency Patterns]] — circuit breaker, bulkhead, retry, timeout, fallback; preventing cascading failures
+- [[Responsibility Layers]] — DDD domain stratification: Capabilities → Operations → Policies → Commitments → Decision Support
+- [[REST]] — architectural style for distributed hypermedia systems; uniform interface, stateless
+- [[Retry Pattern]] — automatic retry of transient failures with backoff strategies
+- [[Richardson Maturity Model]] — levels 0–3 for REST API maturity
+- [[Saga Pattern]] — distributed transaction via local transactions + compensating transactions; no 2PC
+- [[Self-Healing Systems]] — MAML anomaly detection + GNN cascade prediction + RL recovery; autonomous remediation
+- [[Separation of Concerns]] — each module addresses a separate concern
+- [[Serverless Architecture]] — function-based execution; no server management; event-triggered
+- [[Service Mesh]] — infrastructure layer handling service-to-service communication (mTLS, routing, observability)
+- [[Service-Oriented Architecture]] — coarse-grained services communicating via standard protocols (SOAP, ESB)
+- [[Session Guarantees]] — client-centric consistency: Read-Your-Writes, Monotonic Reads, Monotonic Writes, Writes-Follow-Reads
+- [[Sidecar Pattern]] — deploys auxiliary component alongside primary service in separate process/container
+- [[Single Responsibility Principle]] — a class should have only one reason to change
+- [[Singleton Pattern]] — creational pattern ensuring a class has only one instance
+- [[Software Design vs Software Architecture]] — design is local decisions; architecture is system-wide decisions
+- [[State Pattern]] — behavioral pattern allowing an object to alter its behavior when its internal state changes
+- [[Strangler Fig Pattern]] — gradually replaces a legacy system by routing traffic to new implementation
+- [[Strategy Pattern]] — behavioral pattern defining a family of algorithms, encapsulating each one
+- [[Technical Debt]] — future rework implied by choosing an expedient solution now
+- [[Template Method Pattern]] — behavioral pattern defining algorithm skeleton; subclasses fill in steps
+- [[Test Double]] — umbrella term: mock, stub, fake, spy, dummy
+- [[Test Pyramid]] — unit tests at base, integration in middle, end-to-end at top; fast → slow ratio
+- [[Test-Driven Development]] — red-green-refactor cycle; tests drive design
+- [[Twelve-Factor App]] — 12 methodology principles for cloud-native, portable SaaS applications
+- [[Ubiquitous Language]] — DDD shared vocabulary embedded in code, tests, and conversation
+- [[Value Object]] — immutable DDD object defined entirely by its attributes; no identity
+- [[Vector Clock]] — logical timestamps tracking happened-before causality in distributed systems
+- [[Vertical Slice Architecture]] — organizes code by feature (slice through all layers) not by layer
+- [[Visitor Pattern]] — behavioral pattern separating algorithm from the object structure it operates on
+- [[YAGNI Principle]] — You Aren't Gonna Need It; don't add functionality until it is needed
+
+---
+
+## Sources
+
+### Articles
+- [[12factor.net - The Twelve-Factor App]] — authoritative methodology for cloud-native apps
+- [[Apache Kafka - Introduction]] — official Kafka intro: topics, partitions, producers, consumers
+- [[Architectural Patterns for Event-Driven Systems]] — Gravitee guide: EDA patterns taxonomy including event notification, ECST, CQRS, choreography
+- [[Baeldung - Observability in Distributed Systems]] — OpenTracing, OpenTelemetry, Jaeger, Prometheus, ELK
+- [[Best Practice Introduction to DDD]] — Laribee/MSDN: aggregate, bounded context, value object, ACL with examples
+- [[Broadway PHP CQRS Event Sourcing]] — qandidate-labs PHP CQRS+ES framework with testing helpers
+- [[CQRS and Event Sourcing Implementation Guide]] — KnowledgeLib: DLQ, schema registry, event versioning, idempotency, saga
+- [[Data Consistency Models in Distributed Systems]] — Odendaal: gossip protocol, vector clock, LWW, Cassandra, Spanner
+- [[DDD Resources Domain Language]] — Eric Evans domain language site: big blue book resources, ubiquitous language
+- [[Designing Data-Intensive Applications Cloud]] — Orosz/Kleppmann: cloud-native principles, ethical engineering
+- [[Designing Data-Intensive Applications Interview]] — Orosz interview with Kleppmann: distributed systems, AI era
+- [[Dynatrace - What Is Observability]] — monitoring vs observability, logs/metrics/traces, AIOps, SLO, unknown unknowns
+- [[Hazelcast - Consistency in Distributed Systems]] — PACELC, session guarantees, read-your-writes, monotonic reads
+- [[Honeycomb - What Is Observability]] — high-cardinality, core analysis loop, sampling, SLO, incident response
+- [[Martin Fowler - Brooks's Law]] — adding people to late projects; n(n-1)/2 communication paths; Mythical Man Month
+- [[Martin Fowler - Circuit Breaker]] — canonical circuit breaker: Closed/Open/Half-Open states and transitions
+- [[Martin Fowler - Consumer-Driven Contracts]] — consumer-driven contract testing methodology
+- [[Martin Fowler - Practical Test Pyramid]] — test pyramid in depth: unit, integration, UI
+- [[Martin Fowler - Richardson Maturity Model]] — levels 0–3 REST maturity
+- [[Martin Fowler - Strangler Fig Application]] — gradual legacy migration pattern
+- [[Martin Fowler - Test Double]] — mock vs. stub vs. fake vs. spy taxonomy
+- [[Mastering CQRS and Event Sourcing]] — Urdoğan: read/write model separation, eventual consistency
+- [[Mechanical Sympathy]] — hardware-aligned software design: cache lines, false sharing, LMAX Disruptor
+- [[Mia-Platform - Event Sourcing and CQRS]] — Kafka-based projections, audit trail, Single Views, fast data
+- [[microservices.io - Event Sourcing Pattern]] — Richardson: ES for atomic DB+message updates, snapshot, saga, outbox
+- [[microservices.io - Saga Pattern]] — Richardson: saga orchestration and choreography for distributed transactions
+- [[Microsoft Azure - Sidecar Pattern]] — Microsoft: sidecar deployment pattern for cross-cutting concerns
+- [[Microsoft Azure - Strangler Fig Pattern]] — Microsoft: gradual legacy system replacement pattern
+- [[SoftwareMill - Advanced Large-Scale DDD]] — Grabowski: responsibility layers, knowledge level, domain stratification
+- [[Wikipedia - Consistency Model]] — sequential, causal, release consistency, memory ordering models
+- [[Wikipedia - Observability Control Theory]] — observability as inference of internal state from external outputs
+
+### Papers
+- [[arXiv 1902.03305 - Consistency Models Survey]] — comprehensive survey: data-centric, client-centric, CAP, linearizability
+- [[arXiv 2507.13757 - Self-Healing Databases]] — MAML + GNN + RL for autonomous DB failure recovery
+- [[arXiv 2605.03072 - Tactical Wireless Network Design]] — sensitivity analysis of wireless network topology
+- [[arXiv 2605.03143 - Pact Choreographic Language]] — choreographic language for AI agent coordination (game theory)
+- [[arXiv 2605.03190 - VDCores GPU Programming]] — asynchronous GPU resource decoupling
+- [[arXiv 2605.03257 - Operationalizing SE Theories]] — framework for empirical SE theory validation
+- [[arXiv 2605.03411 - DACP Scientific Data Protocol]] — protocol for scientific data access and collaboration
+- [[arXiv 2605.03640 - skd-tree In-memory Indexing]] — in-memory multidimensional indexing data structure
+- [[DDD Systematic Literature Review]] — 36-study SLR: adoption, challenges, effectiveness of DDD in practice
+- [[Enterprise Integration Patterns - EIP]] — Hohpe & Woolf canonical messaging patterns
+- [[Reactive Manifesto]] — definition of reactive systems: responsive, resilient, elastic, message-driven
+- [[Reactive Streams Specification]] — specification for async stream processing with non-blocking backpressure
+
+### Repos
+- [[Architecture Decision Record - joelparkerhenderson]] — ADR templates, formats (Nygard, Y-statement, MADR), examples
+- [[Awesome Awesomeness - bayandin]] — meta-index of curated awesome lists across all topics
+- [[Awesome DDD - heynickc]] — curated DDD, CQRS, Event Sourcing, Event Storming resources
+- [[Awesome Design Patterns - DovAmir]] — curated design patterns across languages and domains
+- [[Awesome Software Architecture (Curated List)]] — curated software architecture resources
+- [[Behavioral Design Patterns (GeeksforGeeks)]] — GoF behavioral pattern implementations
+- [[CQRSKit - TypeScript CQRS ES Framework]] — TypeScript CQRS + ES with event upcasting and schema evolution
+- [[Creational Design Patterns (GeeksforGeeks)]] — GoF creational pattern implementations
+- [[Dapr - Distributed Application Runtime]] — CNCF sidecar runtime: pub/sub, state, actors, workflow building blocks
+- [[DDD By Examples Library]] — strategic + tactical DDD library example with context mapping
+- [[DDD Distilled - amirjani]] — DDD strategic + tactical guide with Event Storming
+- [[Design Patterns Tutorial (GeeksforGeeks)]] — all 23 GoF patterns with code examples
+- [[Domain-Driven Hexagon - Sairyss]] — DDD + Hexagonal Architecture: domain model, ports, adapters in TypeScript
+- [[etcd Distributed Key-Value Store]] — CNCF Raft-based reliable KV store; Kubernetes backing store
+- [[Full-stack Software Design & Architecture Map]] — comprehensive learning map for software architecture
+- [[Go Design Patterns - tmrts]] — Go GoF patterns + goroutine idioms and channel patterns
+- [[gRPC Documentation]] — official gRPC guide: protocol buffers, streaming, deadlines
+- [[GraphQL Learn]] — official GraphQL documentation
+- [[IDDD Samples - Vaughn Vernon]] — bounded context samples from Implementing DDD
+- [[Java Design Patterns - iluwatar]] — all 23 GoF patterns implemented in Java
+- [[Modular Monolith with DDD - kgrzybek]] — working modular monolith implementing DDD bounded contexts in C#
+- [[Netflix Hystrix]] — circuit breaker reference implementation; thread pool isolation, dashboard
+- [[Pact - Consumer-Driven Contract Testing]] — Pact framework documentation
+- [[Python CQRS Framework - vadikko2]] — Python CQRS + ES + Saga + Transactional Outbox + Kafka
+- [[RabbitMQ - AMQP Concepts]] — AMQP protocol, exchanges, queues, bindings
+- [[Software Architecture (Overview Source)]] — software architecture overview
+- [[Software Architecture 1 (Wikipedia)]] — Wikipedia software architecture article
+- [[Software Architecture Guide (GeeksforGeeks)]] — GeeksforGeeks architecture patterns guide
+- [[Software Design (Wikipedia Source)]] — Wikipedia software design article
+- [[Software Development Source]] — general software development source
+- [[Structural Design Patterns]] — GoF structural pattern reference
+- [[System Design 101 - ByteByteGo]] — visual system design concepts; interview preparation
+- [[System Design Primer - donnemartin]] — comprehensive system design: scalability, caching, databases
+- [[Top 10 Software Architecture Patterns for 2025]] — overview of major architectural patterns
+- [[Watermill - Go Event-Driven Library]] — Go pub/sub + message routing + CQRS support
+- [[What is Software Architecture - Comprehensive Guide]] — comprehensive software architecture guide
+- [[What Makes a Good Software Design Mindset (Source)]] — design mindset and principles

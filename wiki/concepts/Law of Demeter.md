@@ -1,9 +1,9 @@
----
+﻿---
 type: concept
 created: 2026-05-03
 updated: 2026-05-03
 sources:
-  - raw/What Makes a Good Software Design Mindset.md
+  - raw/articles/What Makes a Good Software Design Mindset.md
 tags:
   - design
   - principles
@@ -39,14 +39,12 @@ Ian Holland proposed the Law of Demeter in 1987 while working on the Demeter Pro
 ## Examples
 
 **Violation:**
-```java
-// Navigates through Customer to Address to get the city
+````n// Navigates through Customer to Address to get the city
 String city = order.getCustomer().getAddress().getCity();
 ```
 
 **Compliant:**
-```java
-// Order asks for the city directly; internal navigation is hidden inside
+````n// Order asks for the city directly; internal navigation is hidden inside
 String city = order.getCustomerCity();
 ```
 

@@ -1,12 +1,12 @@
----
+﻿---
 type: concept
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-06
 sources:
-  - "raw/Top 10 Software Architecture & Design Patterns for 2025.md"
-  - "raw/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
-  - "raw/Software Architecture.md"
-  - "raw/What is Software Architecture A Comprehensive Guide.md"
+  - "raw/articles/Top 10 Software Architecture & Design Patterns for 2025.md"
+  - "raw/articles/How to Learn Software Design and Architecture  The  Full-stack Software Design & Architecture Map.md"
+  - "raw/articles/Software Architecture.md"
+  - "raw/articles/What is Software Architecture A Comprehensive Guide.md"
   - "https://www.geeksforgeeks.org/system-design/domain-driven-design-ddd/"
   - "https://martinfowler.com/bliki/DomainDrivenDesign.html"
 tags:
@@ -103,9 +103,43 @@ Strategic Design represents DDD's most innovative contribution — organizing la
 ## Real-World Usage
 
 - **Hospital management:** Developers model how hospitals operate — appointments, patient histories, surgical workflows — before implementing. The software reflects the actual healthcare domain, not just database tables.
-- Widely adopted in enterprise Java/C# ecosystems, promoted through frameworks like Axon, NestJS CQRS, and Eventuate.
+- Widely adopted across ecosystems — DDD frameworks and libraries exist for most languages and runtimes; consult the sources section for specific examples.
 - Fowler recommends Evans's original book as a worthwhile investment despite its difficulty, alongside Vaughn Vernon's *Implementing Domain-Driven Design* (2013) for strategic design.
-- Khalil Stemmler's work on TypeScript/Node.js DDD demonstrates DDD at scale in modern environments.
+
+## Tactical Design: Insurance Policy Example (Laribee)
+
+David Laribee's insurance domain case study illustrates DDD tactical patterns concretely:
+
+- `Policy` is an **Aggregate Root** — it enforces invariants about coverage, deductibles, and premium.
+- `Deductible` is a **Value Object** — immutable, defined by its amount and type, no identity of its own.
+- `InsuredPerson` is an **Entity** — has identity that persists across policy renewals.
+- An **Anti-Corruption Layer** translates legacy claim-processing terminology (using "Contract" where the domain says "Policy") at the integration boundary.
+
+Laribee's "Platonic Forms" metaphor: an `Order` in code is an imperfect representation of the ideal *order concept* — model the ideal, not the database table.
+
+## Large-Scale DDD Patterns
+
+For domains too large for a single model (enterprise logistics, banking, healthcare), Evans described additional patterns beyond the tactical building blocks:
+
+- **[[Responsibility Layers]]** — stratifies the domain into layers of increasing abstraction (Capabilities → Operations → Policies → Commitments → Decision Support); higher layers express intent, lower layers express mechanism.
+- **[[Knowledge Level Pattern]]** — separates base-level operational instances from meta-level type/rule objects, enabling configurable behavior without code changes.
+
+See [[DDD Advanced Patterns]] for a synthesis of large-scale DDD including domain distillation and legacy modernization strategies.
+
+## Empirical Evidence (DDD Systematic Literature Review)
+
+A 2023 systematic review of 36 DDD studies found:
+- DDD is most commonly adopted in **microservices contexts** (44% of studies), confirming Bounded Context as the natural microservice boundary.
+- **Bounded Context** is the most frequently applied strategic pattern in practice.
+- Main adoption challenges: steep learning curve, need for sustained domain expert involvement, and inconsistent interpretation of patterns across teams.
+
+## Legacy Modernization with DDD (Evans)
+
+Four strategies for introducing DDD into a legacy system:
+1. **Bubble Context** — carve out a new bounded context that calls the legacy system via an ACL; the bubble gradually expands.
+2. **Autonomous Bubble** — a new context that duplicates necessary data from legacy, decoupling it completely.
+3. **Exposing Legacy as Services** — wrap the legacy system behind a published language so new bounded contexts can call it cleanly.
+4. **ACL Wrapping** — place an Anti-Corruption Layer around the legacy system; new contexts translate through the ACL rather than conforming to legacy semantics.
 
 ## Related
 
@@ -115,3 +149,6 @@ Strategic Design represents DDD's most innovative contribution — organizing la
 - [[Repository Pattern]] — a core DDD tactical building block
 - [[Clean Architecture]] — provides the layer structure within which DDD tactical patterns operate
 - [[Hexagonal Architecture]] — both DDD and Hexagonal emphasize isolating the domain from infrastructure
+- [[Responsibility Layers]] — large-scale DDD domain stratification pattern
+- [[Knowledge Level Pattern]] — meta-model pattern for configurable domain behavior
+- [[DDD Advanced Patterns]] — synthesis topic covering large-scale and legacy modernization strategies
